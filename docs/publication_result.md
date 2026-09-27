@@ -1,5 +1,7 @@
 # 发布执行记录
 
+后续更新：Harness 原生插件已发布版本化 Release，并实际进入官网所链接的社区 topic 目录；见 [2026-09-27 Harness 发布与生态接入记录](harness_plugin_publication_20260927.md)。下文保留首次源码公开时的状态快照。
+
 2026-09-27 已发布公开源码仓库：
 https://github.com/David7583/baigong_research_atlas
 

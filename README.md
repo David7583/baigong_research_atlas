@@ -9,6 +9,7 @@ Continue one research project across agents and AI clients, with versioned tasks
 - [中文：安装与使用](百工·research_atlas.md)
 - [English: installation and usage](Baigong·research_atlas.md)
 - [DeepSeek Harness plugin / 原生工具插件](plugins/dsh-research-atlas/README.md)
+- [Harness plugin release / 插件发布](https://github.com/David7583/baigong_research_atlas/releases/tag/dsh-plugin-v0.1.0) · [官方社区分享 / Community discussion](https://github.com/deepseek-ai/deepseek-harness/discussions/8046)
 - [Related project / 关联项目：baigong](https://github.com/David7583/baigong)
 - [Apache-2.0](LICENSE) · [NOTICE](NOTICE) · [Citation](CITATION.cff)
 
