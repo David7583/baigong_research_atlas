@@ -68,6 +68,10 @@ python -B -m unittest discover -s tests -p "test_research*.py"
 
 The accepted deployment includes actual DeepSeek/Kimi API and Harness handoff tests, offline integration tests and independent-directory checks. This does not certify every provider/client or operating system. See the [deployment details](docs/deployment.md) and [acceptance evidence](docs/promotion_acceptance_20260927.md) (Chinese).
 
+## DeepSeek Harness plugin
+
+A native DeepSeek Harness plugin is available: [installation and tool contracts](plugins/dsh-research-atlas/README.md), [acceptance evidence](docs/harness_plugin_acceptance_20260927.md). It defaults to read-only and requires explicit deployment configuration for writes. Compatibility is validated against Harness `0.1.5-rc.3`. Its Cordis tools call the existing Python core; it is separate from the model HTTP bridge.
+
 ## Attribution, license and citation
 
 This project is associated with [baigong](https://github.com/David7583/baigong) and reuses a local snapshot of its Data–Action–Data implementation. [Source hashes](provenance/source_manifest.json) identify the copied files; the snapshot is not asserted to match a particular upstream release.

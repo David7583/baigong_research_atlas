@@ -60,6 +60,10 @@ python -B -m unittest discover -s tests -p "test_research*.py"
 
 [晋升验收](docs/promotion_acceptance_20260927.md)记录了已有测试；不将机制测试等同于所有客户端的实测。
 
+## DeepSeek Harness 插件
+
+原生 DeepSeek Harness 插件已提供：见 [插件安装与操作契约](plugins/dsh-research-atlas/README.md) 和 [验收记录](docs/harness_plugin_acceptance_20260927.md)。默认只读，显式配置后才开放写入；兼容性限定为已验收的 Harness `0.1.5-rc.3`。它通过 Cordis 工具调用现有 Python 核心，区别于已有模型 HTTP 桥接。
+
 ## 来源、许可与引用
 
 本项目关联 [baigong](https://github.com/David7583/baigong)，复用其本机 Data–Action–Data 源码。逐文件来源与哈希见 [source_manifest.json](provenance/source_manifest.json)，不自动等同于上游某个发行版本。

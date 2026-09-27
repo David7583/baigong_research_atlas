@@ -1,0 +1,5 @@
+- insert:
+    - id: baigong-research-atlas
+      name: dsh-research-atlas
+      disabled: true
+# Configure this row in the profile's cordis.patch.yml before enabling it.

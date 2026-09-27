@@ -1,0 +1,16 @@
+{
+  "name": "dsh-research-atlas",
+  "version": "0.1.0",
+  "description": "Baigong research continuity tools for DeepSeek Harness: persistent tasks, evidence and stage handoffs across executors.",
+  "type": "module",
+  "main": "research_atlas_plugin_v0001.js",
+  "files": ["research_atlas_plugin_v0001.js", "cordis.patch.yml", "README.md", "LICENSE", "NOTICE"],
+  "license": "Apache-2.0",
+  "author": "Ruixin Yang (David7583)",
+  "repository": {"type": "git", "url": "git+https://github.com/David7583/baigong_research_atlas.git", "directory": "plugins/dsh-research-atlas"},
+  "keywords": ["dsh-plugin", "deepseek-harness", "research", "continuity", "baigong"],
+  "engines": {"node": ">=22"},
+  "peerDependencies": {"@deepseek-ai/cordis": "4.0.2", "@deepseek-ai/dsh-tools": "0.1.5-rc.3", "@deepseek-ai/schemastery": "3.18.2"},
+  "devDependencies": {"@deepseek-ai/cordis": "4.0.2", "@deepseek-ai/dsh-tools": "0.1.5-rc.3", "@deepseek-ai/schemastery": "3.18.2", "@deepseek-ai/dsh-system-prompt": "0.1.5-rc.3"},
+  "dsh": {"bundle": {"patch": "./cordis.patch.yml"}}
+}
