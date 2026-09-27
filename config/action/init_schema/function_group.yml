@@ -1,0 +1,91 @@
+# ============================================================
+# function_group.yml
+# 功能组 schema 声明
+# Used by: init_action_schema_v0002.py
+# ============================================================
+#
+# 功能组登记"有目标的脚本组合"——什么时候、谁、在哪里，
+# 把哪些脚本按照什么顺序组合成了一个什么功能。
+#
+# function_dependencies 保存脚本及其他依赖；脚本的明确执行/编排顺序
+# 由 flow_definition(scope=function, element_type=script) 保存。
+#
+# 关键设计：依赖采用方式 C
+#   - dependency_type_registry：依赖类型必须先在这里登记
+#   - function_dependencies：实际依赖关系，dependency_type 受上表约束
+#
+# 数据来源：声明驱动（人/agent 主动调用 register_function writer）
+# ============================================================
+
+tables:
+
+  # ----------------------------------------------------------
+  # 1. function_registry —— 功能登记主表
+  # ----------------------------------------------------------
+  - table_name: function_registry
+    purpose: 登记每一个由有序脚本组合形成、具有明确目标的功能
+    columns:
+      - { name: function_id,        type: TEXT, nullable: false }  # UUID4 hex
+      - { name: function_name,      type: TEXT, nullable: false }
+      - { name: description,        type: TEXT, nullable: true }
+      - { name: registered_at,      type: TEXT, nullable: false }  # ISO UTC
+      - { name: registered_by,      type: TEXT, nullable: false }
+      - { name: registered_where,   type: TEXT, nullable: false }  # 机器名
+      - { name: registered_device,  type: TEXT, nullable: true }   # 设备指纹/型号（可选）
+      - { name: status,             type: TEXT, nullable: false, default: "'active'" }
+    primary_key: [function_id]
+    indexes:
+      - { name: idx_function_registry_name,   columns: [function_name] }
+      - { name: idx_function_registry_status, columns: [status] }
+
+  # ----------------------------------------------------------
+  # 2. dependency_type_registry —— 依赖类型注册表（制度约束源）
+  # ----------------------------------------------------------
+  - table_name: dependency_type_registry
+    purpose: 登记所有合法的依赖类型。新依赖类型必须先在这里注册才能使用。
+    columns:
+      - { name: type_name,    type: TEXT, nullable: false }   # 如 'script' / 'ai' / 'agent'
+      - { name: description,  type: TEXT, nullable: true }
+      - { name: registered_at,    type: TEXT, nullable: false }
+      - { name: registered_by,    type: TEXT, nullable: false }
+      - { name: registered_where, type: TEXT, nullable: false }
+    primary_key: [type_name]
+    post_create_actions:
+      # 建表后立即预填三个已知类型，作为系统启动基线
+      - action: insert_initial_records
+        records:
+          - { type_name: script,
+              description: "依赖一个脚本（script_registry 中已登记的 alias）",
+              registered_at: "__INIT__",
+              registered_by: "__SYSTEM__",
+              registered_where: "__INIT__" }
+          - { type_name: ai,
+              description: "依赖 AI 能力（如某个 LLM provider/model）",
+              registered_at: "__INIT__",
+              registered_by: "__SYSTEM__",
+              registered_where: "__INIT__" }
+          - { type_name: agent,
+              description: "依赖一个 agent",
+              registered_at: "__INIT__",
+              registered_by: "__SYSTEM__",
+              registered_where: "__INIT__" }
+          - { type_name: third_party,
+              description: "依赖第三方库（与 register_dependency 注册表对齐）",
+              registered_at: "__INIT__",
+              registered_by: "__SYSTEM__",
+              registered_where: "__INIT__" }
+
+  # ----------------------------------------------------------
+  # 3. function_dependencies —— 功能的依赖（开放集合，受类型约束）
+  # ----------------------------------------------------------
+  - table_name: function_dependencies
+    purpose: 登记功能依赖什么；脚本依赖必须同时在 function 作用域 Flow 中保存顺序
+    columns:
+      - { name: function_id,         type: TEXT, nullable: false }  # 引用 function_registry
+      - { name: dependency_type,     type: TEXT, nullable: false }  # 引用 dependency_type_registry
+      - { name: dependency_target,   type: TEXT, nullable: false }  # 具体依赖什么的标识
+      - { name: declared_at,         type: TEXT, nullable: false }
+    primary_key: [function_id, dependency_type, dependency_target]
+    indexes:
+      - { name: idx_function_deps_target, columns: [dependency_target] }
+      - { name: idx_function_deps_type,   columns: [dependency_type] }

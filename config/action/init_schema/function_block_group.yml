@@ -1,0 +1,66 @@
+# ============================================================
+# function_block_group.yml
+# 功能块组 schema 声明
+# Used by: init_action_schema_v0002.py
+# ============================================================
+#
+# 功能块组登记"任务的复用晋升结果"。任务经过大量重复调用、已经
+# 形成稳定复用价值后，才能晋升为功能块，供其他任务或流程方便调用。
+# 新任务不得自动或例行创建功能块。
+#
+# 关键概念区分：
+#   - source_task_id: 功能块由哪个真实任务晋升而来（必需语义）
+#   - reuse_evidence: 为什么认定该任务已经形成稳定复用价值
+#   - membership: 晋升时对来源任务功能 Flow 的只读快照
+#   - composition: 这个功能块从哪些其他功能块派生而来（纵向：血缘）
+#
+# 数据来源：声明驱动（任务被反复调用后，由人/agent 审核并显式晋升）
+# ============================================================
+
+tables:
+
+  # ----------------------------------------------------------
+  # 1. function_block_registry —— 功能块身份与源头血缘
+  # ----------------------------------------------------------
+  - table_name: function_block_registry
+    purpose: 登记由高频稳定复用任务晋升而来的功能块身份、来源和复用依据
+    columns:
+      - { name: block_id,           type: TEXT, nullable: false }  # UUID4 hex
+      - { name: block_name,         type: TEXT, nullable: false }
+      - { name: description,        type: TEXT, nullable: true }
+      - { name: registered_at,      type: TEXT, nullable: false }
+      - { name: registered_by,      type: TEXT, nullable: false }
+      - { name: registered_where,   type: TEXT, nullable: false }
+      - { name: source_task_id,     type: TEXT, nullable: true }   # 新登记策略要求真实来源任务；nullable 兼容历史
+      - { name: reuse_evidence,     type: TEXT, nullable: true }   # 新登记策略要求复用依据；nullable 兼容历史
+      - { name: status,             type: TEXT, nullable: false, default: "'active'" }
+    primary_key: [block_id]
+    indexes:
+      - { name: idx_block_registry_name,   columns: [block_name] }
+      - { name: idx_block_registry_source, columns: [source_task_id] }
+
+  # ----------------------------------------------------------
+  # 2. function_block_membership —— 功能块的成员
+  # ----------------------------------------------------------
+  - table_name: function_block_membership
+    purpose: 保存功能块晋升时来源任务所包含功能及顺序的快照
+    columns:
+      - { name: block_id,    type: TEXT,    nullable: false }  # 引用 function_block_registry
+      - { name: function_id, type: TEXT,    nullable: false }  # 引用 function_registry
+      - { name: position,    type: INTEGER, nullable: true }   # 在块内的位置（可选，用于排序）
+      - { name: declared_at, type: TEXT,    nullable: false }
+    primary_key: [block_id, function_id]
+    indexes:
+      - { name: idx_block_membership_function, columns: [function_id] }
+
+  # ----------------------------------------------------------
+  # 3. function_block_composition —— 功能块的派生血缘（极简两列）
+  # ----------------------------------------------------------
+  - table_name: function_block_composition
+    purpose: 登记功能块之间的派生关系（纵向血缘，极简两列）
+    columns:
+      - { name: parent_block_id, type: TEXT, nullable: false }
+      - { name: child_block_id,  type: TEXT, nullable: false }
+    primary_key: [parent_block_id, child_block_id]
+    indexes:
+      - { name: idx_block_composition_child, columns: [child_block_id] }

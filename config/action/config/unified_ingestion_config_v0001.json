@@ -1,0 +1,8 @@
+{
+  "schema_version": "unified_ingestion_config_v0001",
+  "state_root": "temp/ingestion_runtime",
+  "device_id": "synthetic-research-lab",
+  "max_file_bytes": 2097152,
+  "max_batch_files": 12,
+  "gateway_timeout": 30
+}

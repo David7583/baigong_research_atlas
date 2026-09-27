@@ -1,0 +1,2 @@
+# Preserve source snapshot bytes and provenance hashes across Windows checkouts.
+* -text

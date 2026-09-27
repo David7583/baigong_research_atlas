@@ -1,0 +1,74 @@
+meta:
+  header_type: meta
+  source: ChatGPT Conversation
+  date: 2026-02-08
+  theme:
+    - 行动层
+    - 制度裁决
+    - unit 显著性
+  tags:
+    - policy
+    - decide_unit_prominence
+    - single_conv
+    - v0001
+  notes: >
+    本文件定义行动层对应阶段中，
+    对候选结构单元是否具备制度登记资格的裁决规则。
+    v0001 版本仅基于单一 conv 内的结构事实，
+    不引入任何跨 conv 稳定性判断。
+  status: active
+
+  updatable: true
+  managed_by: header_system_guide_v0001
+  registered_by: manual_registry_v0001.py
+  updated_via: policy_revision
+  lineage:
+    - header_system_guide_v0001.md
+    - My_Local_AI 理解层分析管线 v0001 说明
+
+# =========================
+# Policy Body（制度正文）
+# =========================
+
+policy_version: v0001
+policy_name: decide_unit_prominence
+scope: single_conv_only
+
+hard_constraints:
+  require_boundary_stable: true
+  boundary_unstable_action: DELAY
+
+noise_constraints:
+  high_noise_action: FREEZE
+  medium_noise_action: DELAY
+  low_noise_action: ALLOW
+
+structural_role_rules:
+  stable_role_action: ALLOW
+  diffuse_role_action: DELAY
+  incidental_role_action: FREEZE
+
+decision_priority:
+  - hard_constraints
+  - noise_constraints
+  - structural_role_rules
+
+allowed_decisions:
+  - ALLOW
+  - DELAY
+  - FREEZE
+
+audit_confidence:
+  description: >
+    audit_confidence 表示当前裁决所依据的结构证据充分程度，
+    仅用于制度审计与回溯说明，
+    不表示结构单元的重要性评分或优先级。
+  range: [0.0, 1.0]
+
+forbidden:
+  - cross_conv_statistics
+  - semantic_inference
+  - embedding_usage
+  - model_inference
+  - unit_specific_overrides
+  - dynamic_threshold_adjustment

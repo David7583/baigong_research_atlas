@@ -1,0 +1,28 @@
+{
+  "schema_version": "supplemental_annotation_config_v0001",
+  "framework_version": "v0001",
+  "batch_size": 500,
+  "execution_order": [
+    "temporal_annotation"
+  ],
+  "plugins": {
+    "temporal_annotation": {
+      "enabled": true,
+      "required": true,
+      "version": "v0001",
+      "config": {
+        "rule_version": "temporal_rules_zh_v0001",
+        "text_fields": [
+          "text",
+          "unit_text"
+        ],
+        "reference_time_fields": [
+          "event_time",
+          "message_time",
+          "created_at",
+          "timestamp"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+meta:
+  header_type: meta
+  source: manual_design
+  date: 2026-02-12
+  theme: [sql_writer, persistence, ingestion]
+  tags: [config, sql, writer, v0001]
+  notes: "行动端 sql_writer 数据库连接与结构映射配置，不包含写入制度逻辑"
+  status: active
+  updatable: true
+
+  lineage:
+    governed_by:
+      - SQL库层手册_v0003
+      - 行动端产物写入与身份锚定规范_v0001
+
+  managed_by: sql_writer_v0001.py
+  registered_by: manual_registry_v0001.py
+  updated_via: manual_edit
+
+# ============================================================
+# sql_writer_config_v0001.yml
+# 物理数据库连接与结构映射配置
+# 不包含任何制度语义
+# ============================================================
+
+version: v0001
+
+driver: sqlite
+
+connection:
+  sqlite:
+    path: sql/action_data.db
+    timeout: 30
+    pragmas:
+      foreign_keys: true
+      journal_mode: WAL
+      synchronous: NORMAL
+
+tables:
+  concept: concept_units
+  instance: instance_units
+  attribute: unit_attributes
+  run_log: ingestion_run_log
+
+fields:
+
+  concept:
+    id: unit_text_id
+    text: unit_text
+    hash: content_hash
+    schema_version: schema_version
+    first_seen_instance: first_seen_instance_id
+    created_at: created_at
+    run_id: run_id
+
+  instance:
+    id: instance_id
+    concept_id: unit_text_id
+    asset_id: asset_id
+    path: path
+    value_index: value_index
+    segment_index: segment_index
+    sentence_index: sentence_index
+    char_start: char_start
+    char_end: char_end
+    content: content
+    content_hash: content_hash
+    schema_version: schema_version
+    created_at: created_at
+    run_id: run_id
+
+  attribute:
+    id: attr_id
+    object_type: object_type
+    object_id: object_id
+    attr_scope: attr_scope
+    attr_key: attr_key
+    attr_value: attr_value
+    attr_type: attr_type
+    attr_state: attr_state
+    evidence_ref: evidence_ref
+    created_at: created_at
+    created_by: created_by
+    run_id: run_id
+
+  run_log:
+    run_id: run_id
+    script_name: script_name
+    script_version: script_version
+    started_at: started_at
+    finished_at: finished_at
+    input_hash: input_hash
+    output_hash: output_hash
+    error_summary: error_summary
+    environment_fingerprint: environment_fingerprint
+
+runtime:
+  transaction_per_call: true
+  return_existing_on_conflict: true
+  strict_foreign_keys: true

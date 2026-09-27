@@ -1,0 +1,59 @@
+version: v0001
+
+# ============================================================
+# 一、文本规范化规则（必须与 ingest_concept 完全一致）
+# ============================================================
+canonicalization:
+  source_field: "unit_text"         # 保持不变，文本在顶层
+  normalize_line_endings: true
+  unicode_normalization: NFC
+  trim_whitespace: true
+  collapse_internal_whitespace: true
+  case_folding: false
+  fullwidth_to_halfwidth: false
+  punctuation_normalization: false
+
+# ============================================================
+# 二、Instance 身份锚定规则（观测坐标系）
+# ============================================================
+identity_anchor:
+  algorithm: sha256
+  # 修改点：确保哈希计算时，脚本去嵌套层抓取坐标组件
+  components:
+    - concept_id
+    - "example_unit.asset_id"
+    - "example_unit.path"
+    - "example_unit.segment_index"
+    - "example_unit.char_start"
+    - "example_unit.char_end"
+  null_representation: "NULL"
+
+# ============================================================
+# 三、字段合法性约束
+# ============================================================
+validation:
+  # 修改点：将必需字段指向嵌套路径，防止判定为 invalid
+  required_fields:
+    - unit_text
+    - "example_unit.asset_id"
+    - "example_unit.path"
+    - "example_unit.segment_index"
+  optional_fields:
+    - "example_unit.char_start"
+    - "example_unit.char_end"
+    - decision
+  allow_null_position: true
+
+# ============================================================
+# 四、Decision 闸门规则
+# ============================================================
+decision_gate:
+  enabled: true
+  allow_value: "ALLOW"
+
+# ============================================================
+# 五、Schema 声明
+# ============================================================
+schema:
+  schema_version_value: v0001
+  instance_type: observation_event

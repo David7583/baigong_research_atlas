@@ -1,0 +1,92 @@
+meta:
+  source: ChatGPT Conversation
+  date: 2026-02-08
+  theme: [结构去噪, 行动层, 形式过滤]
+  tags: [policy, structural_noise, filter, action, v0001]
+  notes: "用于 filter_structural_noise_v0001.py 的结构噪声过滤策略，仅基于形式与结构特征，不涉及任何语义判断。"
+  status: active
+  updatable: true
+  managed_by: manual_registry_v0001.py
+  registered_by: header_system_guide_v0001
+  updated_via: none
+  lineage: header_system_guide_v0001
+
+# -------------------------------------------------------------------
+# Structural Noise Filtering Policy Body
+# -------------------------------------------------------------------
+
+policy_version: v0001
+
+# ==========================================================
+# 一、长度与空值规则
+# ==========================================================
+
+# 规范化后最小长度阈值
+# 小于该长度的 unit 直接视为结构噪声
+min_normalized_length: 2
+
+# 规范化后是否允许空字符串存在
+# false 表示空字符串直接 DROP
+allow_empty_after_normalize: false
+
+# ==========================================================
+# 二、纯形式噪声判定规则
+# ==========================================================
+
+# 是否过滤“纯数字”单元
+filter_numeric_only: true
+
+# 是否过滤“纯标点”单元
+filter_punctuation_only: true
+
+# 是否过滤“符号组合型”单元
+# 如: "---", "***", "///"
+filter_symbol_only: true
+
+# ==========================================================
+# 三、字符类别定义（形式级）
+# ==========================================================
+
+# 被视为“标点”的字符集合（用于纯标点判断）
+punctuation_chars: ".,;:!?，。；：？！"
+
+# 被视为“符号”的字符集合（用于符号组合判断）
+symbol_chars: "-_=+*/\\|<>~`^#@"
+
+# ==========================================================
+# 四、正则规则（仅形式，不涉及语义）
+# ==========================================================
+
+# 是否启用正则规则
+enable_regex_rules: true
+
+# 正则规则列表
+# 每条规则命中即判定为结构噪声
+regex_rules:
+  - id: repeated_dashes
+    pattern: "^[-_]{2,}$"
+    reason: repeated_symbols
+
+  - id: repeated_asterisks
+    pattern: "^\\*{2,}$"
+    reason: repeated_symbols
+
+  - id: numeric_sequence
+    pattern: "^\\d+$"
+    reason: numeric_only
+
+# ==========================================================
+# 五、输出控制（v0001 保守策略）
+# ==========================================================
+
+# 是否允许 KEEP 但标记为 noise_candidate
+# v0001 阶段不启用，统一使用 KEEP / DROP
+allow_soft_keep: false
+
+# ==========================================================
+# 六、预留字段（接口一致性）
+# ==========================================================
+
+# 保留字段，用于与后续 decide / profile policy 保持接口一致
+# v0001 不参与计算
+dominant_path_threshold: 0.8

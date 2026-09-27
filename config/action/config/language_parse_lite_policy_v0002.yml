@@ -1,0 +1,65 @@
+meta:
+  header_type: meta
+  source: System Architect
+  date: "2026-03-06"
+  theme:
+    - language_parse_lite
+    - structural_parsing
+    - action_preparation
+  tags:
+    - parsing
+    - segmentation
+    - structure
+    - v0002
+  notes: >
+    Policy for lightweight language parsing.
+    This policy defines structural segmentation rules only.
+    No semantic interpretation is permitted at this stage.
+    [v0002] Removed unimplemented ghost configs to strictly match execution script.
+  status: active
+
+  updatable: true
+
+  lineage:
+    - decide_parse_eligibility_v0002.py
+    - profile_string_values_v0003.py
+
+  managed_by: manual_registry_v0001.py
+  registered_by: manual_registry_v0001.py
+  updated_via: manual_update_only
+
+
+policy:
+  name: language_parse_lite
+  version: v0002
+  description: >
+    Lightweight language parsing policy.
+    Operates only on paths explicitly allowed by parse eligibility decisions.
+    Produces structurally indexed text units with full source traceability and STRICT absolute coordinates.
+
+input_constraints:
+  accepted_decision: ALLOW
+  required_fields:
+    - asset_id
+    - path
+    - decision
+
+segmentation:
+  paragraph:
+    enabled: true
+    split_on_newline: true
+    keep_empty: false
+
+  sentence:
+    enabled: true
+    split_on_punctuation: ".?!。！？"
+
+statistics:
+  compute:
+    - char_length
+    - punct_count
+  punct_definition:
+    characters: ".,;:!?。！？"
+
+output:
+  unit_type: text_unit

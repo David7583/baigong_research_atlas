@@ -1,0 +1,26 @@
+version: v0001
+family: content_delta_filter
+role: exact_content_novelty_rules
+
+input:
+  text_field: unit_text
+  required_fields:
+    - unit_id
+    - unit_text
+    - asset_id
+    - path
+    - value_index
+    - segment_index
+    - sentence_index
+    - char_start
+    - char_end
+
+canonicalizer:
+  entry_point: scripts/action/anchor/ingest_concept_units_v0002.py
+  rules_source: config/action/config/ingest_concept_units_config_v0001.yml
+
+comparison:
+  table: concept_units
+  hash_field: content_hash
+  batch_size: 500
+  require_index: true

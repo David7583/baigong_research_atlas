@@ -1,0 +1,67 @@
+# ============================================================
+# script_group.yml
+# 脚本组 schema 声明
+# Used by: init_action_schema_v0002.py
+# ============================================================
+#
+# 脚本组登记物理实现物——脚本文件的元数据。
+# 这一组是 capability_scripts/depends_on/used_by 的继承者，
+# 改名 + 字段清理 + 脱掉 capability 前缀。
+#
+# 数据来源：scan_alias_meta 产出的 JSONL（派生型影子在 writer 里实现）
+# 字段类型：除时间戳和外键 ID 外，绝大部分为 TEXT
+# ============================================================
+
+tables:
+
+  # ----------------------------------------------------------
+  # 1. script_registry —— 脚本元数据主表
+  # ----------------------------------------------------------
+  - table_name: script_registry
+    purpose: 登记每一个脚本的元数据（来自 ALIAS_META 头）
+    columns:
+      - { name: alias,         type: TEXT,    nullable: false }
+      - { name: version,       type: TEXT,    nullable: false }
+      - { name: family,        type: TEXT,    nullable: true }
+      - { name: role,          type: TEXT,    nullable: true }
+      - { name: status,        type: TEXT,    nullable: true }
+      - { name: entry_point,   type: TEXT,    nullable: true }
+      - { name: layer,         type: TEXT,    nullable: true }
+      - { name: main_layer,    type: TEXT,    nullable: true }
+      - { name: updatable,     type: TEXT,    nullable: true }
+      - { name: input_spec,    type: TEXT,    nullable: true }   # JSONL 里 input 字段的完整文本
+      - { name: output_spec,   type: TEXT,    nullable: true }   # JSONL 里 output 字段的完整文本
+      - { name: registered_at, type: TEXT,    nullable: false }  # ISO UTC
+      - { name: registered_by, type: TEXT,    nullable: false }
+      - { name: registered_where, type: TEXT, nullable: false }  # 机器名
+      - { name: source_jsonl,  type: TEXT,    nullable: true }   # 来自哪份 JSONL
+    primary_key: [alias, version]
+    indexes:
+      - { name: idx_script_registry_family, columns: [family] }
+      - { name: idx_script_registry_status, columns: [status] }
+
+  # ----------------------------------------------------------
+  # 2. script_dependencies —— 脚本依赖的其他脚本
+  # ----------------------------------------------------------
+  - table_name: script_dependencies
+    purpose: 一个脚本声明它依赖的其他脚本（来自 ALIAS_META 的 depends_on）
+    columns:
+      - { name: alias,        type: TEXT, nullable: false }
+      - { name: version,      type: TEXT, nullable: false }
+      - { name: depends_on,   type: TEXT, nullable: false }  # 被依赖的脚本 alias
+    primary_key: [alias, version, depends_on]
+    indexes:
+      - { name: idx_script_deps_target, columns: [depends_on] }
+
+  # ----------------------------------------------------------
+  # 3. script_consumers —— 脚本被哪些其他脚本消费
+  # ----------------------------------------------------------
+  - table_name: script_consumers
+    purpose: 一个脚本声明它被哪些脚本消费（来自 ALIAS_META 的 used_by）
+    columns:
+      - { name: alias,    type: TEXT, nullable: false }
+      - { name: version,  type: TEXT, nullable: false }
+      - { name: consumer, type: TEXT, nullable: false }  # 消费者脚本 alias
+    primary_key: [alias, version, consumer]
+    indexes:
+      - { name: idx_script_consumers_target, columns: [consumer] }

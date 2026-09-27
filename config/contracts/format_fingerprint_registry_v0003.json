@@ -1,0 +1,78 @@
+{
+  "schema_version": "format_fingerprint_registry_v0003",
+  "registry_version": "v0003",
+  "canonical_contract": "canonical_conversation_ingress_v0001",
+  "formats": [
+    {
+      "format_family": "canonical_conversation_ingress_v0001",
+      "fingerprint_version": "v0001",
+      "status": "candidate",
+      "detector": "canonical_conversation_ingress_v0001",
+      "root_type": "object",
+      "required_paths": [
+        "/schema_version",
+        "/dataset_id",
+        "/source_envelope_id",
+        "/conversations"
+      ],
+      "forbidden_paths": [],
+      "adapter": {
+        "family": "canonical_ingress_passthrough",
+        "version": "v0001",
+        "entry_point": "scripts/adapters/ingress/canonical_ingress_gateway_v0003.py",
+        "native_passthrough": true
+      }
+    },
+    {
+      "format_family": "array_uuid_chat_messages_v1",
+      "fingerprint_version": "v0001",
+      "status": "candidate",
+      "detector": "array_uuid_chat_messages_v1",
+      "root_type": "array",
+      "required_paths": [
+        "/*/uuid",
+        "/*/chat_messages",
+        "/*/chat_messages/*/sender",
+        "/*/chat_messages/*/text"
+      ],
+      "forbidden_paths": [
+        "/schema_version",
+        "/*/nodes",
+        "/*/mapping"
+      ],
+      "adapter": {
+        "family": "adapt_array_uuid_chat_messages",
+        "version": "v0001",
+        "entry_point": "scripts/adapters/ingress/adapters/adapt_array_uuid_chat_messages_v0001.py",
+        "native_passthrough": false
+      }
+    },
+    {
+      "format_family": "mapping_current_node_conversations_v1",
+      "fingerprint_version": "v0001",
+      "status": "candidate",
+      "detector": "mapping_current_node_conversations_v1",
+      "root_type": "array",
+      "required_paths": [
+        "/*/conversation_id",
+        "/*/mapping",
+        "/*/current_node",
+        "/*/mapping/*/children",
+        "/*/mapping/*/message/id",
+        "/*/mapping/*/message/author/role",
+        "/*/mapping/*/message/content/content_type"
+      ],
+      "forbidden_paths": [
+        "/schema_version",
+        "/*/chat_messages",
+        "/*/nodes"
+      ],
+      "adapter": {
+        "family": "adapt_mapping_current_node_conversations",
+        "version": "v0003",
+        "entry_point": "scripts/adapters/ingress/adapters/adapt_mapping_current_node_conversations_v0003.py",
+        "native_passthrough": false
+      }
+    }
+  ]
+}

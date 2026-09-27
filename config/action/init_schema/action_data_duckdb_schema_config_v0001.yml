@@ -1,0 +1,120 @@
+# ============================================================
+# File: action_data_duckdb_schema_config_v0001.yml
+# 中文名: 行动端数据四库 DuckDB 派生层 schema 配置
+# Version: v0001
+#
+# 服务脚本: init_action_data_duckdb_schema_v0001.py
+# 默认查找路径: config/action/init_schema/action_data_duckdb_schema_config_v0001.yml
+#
+# 说明
+#   本文件把脚本内置默认值显式声明出来,使「表/视图结构」这一事实
+#   从代码隐式默认,提升为 config 显式声明(config 驱动 / 数据层为唯一权威)。
+#
+#   当前阶段:表结构与理解端 init_duckdb_schema_v0002 完全同构。
+#   区别仅在 db 文件路径与派生目录:
+#     理解端: derivation/understand/duckdb/understand_analysis.duckdb
+#     行动端: derivation/action/duckdb/action_data_analysis.duckdb
+#   各端的库会在各自演化中逐渐分化(仓库先建好,演化交给以后)。
+#
+# 注意:DuckDB 脚本对 tables / views / fields 是「与默认合并」(merge),
+#   与 SQL 脚本的「整段替换」不同。即使漏写某项,也会回退到内置默认补齐。
+#   这里仍然写全,保持两个 config 的可读性一致。
+#   DuckDB 无 SQLite 那套 PRAGMA,故本文件不含 pragmas 段。
+# ============================================================
+
+
+# ------------------------------------------------------------
+# 连接 / 数据库文件位置
+# ------------------------------------------------------------
+connection:
+  duckdb:
+    # 相对当前隔离工程 project root 解析
+    path: "derivation/action/duckdb/action_data_analysis.duckdb"
+
+
+# ------------------------------------------------------------
+# 表名映射(config_key -> 实际表名)
+# 派生层为同步快照表,记录每次从 SQL 原生层同步过来的数据
+# ------------------------------------------------------------
+tables:
+  sync_log: "_sync_log"
+  instance_sync: "instance_units_sync"
+  concept_sync: "concept_units_sync"
+  attribute_sync: "attribute_units_sync"
+
+
+# ------------------------------------------------------------
+# 视图名映射(config_key -> 实际视图名)
+# latest 视图:取每条记录的最新一次同步快照
+# ------------------------------------------------------------
+views:
+  instance_latest: "instance_units_latest"
+  concept_latest: "concept_units_latest"
+  attribute_latest: "attribute_units_latest"
+
+
+# ------------------------------------------------------------
+# 字段名映射(逻辑名 -> 实际列名)
+# 同步表在原生层字段基础上多了 sync_id / synced_at 两列
+# ------------------------------------------------------------
+fields:
+
+  # 同步运行日志:append-only,记录每次同步运行
+  sync_log:
+    sync_id: "sync_id"
+    source_db: "source_db"
+    source_table: "source_table"
+    record_count: "record_count"
+    started_at: "started_at"
+    finished_at: "finished_at"
+    script_name: "script_name"
+    script_version: "script_version"
+    source_db_hash: "source_db_hash"
+
+  # 实例单元同步快照
+  instance_sync:
+    sync_id: "sync_id"
+    synced_at: "synced_at"
+    instance_id: "instance_id"
+    unit_text_id: "unit_text_id"
+    asset_id: "asset_id"
+    path: "path"
+    value_index: "value_index"
+    segment_index: "segment_index"
+    sentence_index: "sentence_index"
+    char_start: "char_start"
+    char_end: "char_end"
+    content: "content"
+    content_hash: "content_hash"
+    created_at: "created_at"
+    schema_version: "schema_version"
+    run_id: "run_id"
+
+  # 概念单元同步快照
+  concept_sync:
+    sync_id: "sync_id"
+    synced_at: "synced_at"
+    unit_text_id: "unit_text_id"
+    unit_text: "unit_text"
+    content_hash: "content_hash"
+    first_seen_instance_id: "first_seen_instance_id"
+    created_at: "created_at"
+    schema_version: "schema_version"
+    run_id: "run_id"
+
+  # 属性同步快照
+  attribute_sync:
+    sync_id: "sync_id"
+    synced_at: "synced_at"
+    attr_id: "attr_id"
+    object_type: "object_type"
+    object_id: "object_id"
+    attr_scope: "attr_scope"
+    attr_key: "attr_key"
+    attr_value: "attr_value"
+    attr_type: "attr_type"
+    attr_state: "attr_state"
+    evidence_ref: "evidence_ref"
+    created_at: "created_at"
+    created_by: "created_by"
+    run_id: "run_id"

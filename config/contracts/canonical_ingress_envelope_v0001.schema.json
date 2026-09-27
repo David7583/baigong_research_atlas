@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "canonical_ingress_envelope_v0001.schema.json",
+  "title": "Canonical Ingress Envelope v0001",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "envelope_id",
+    "contract_version",
+    "created_at",
+    "run_id",
+    "status",
+    "source",
+    "detection",
+    "adapter",
+    "canonical_output",
+    "conservation",
+    "lineage"
+  ],
+  "properties": {
+    "schema_version": {"const": "canonical_ingress_envelope_v0001"},
+    "envelope_id": {"$ref": "#/$defs/non_empty_string"},
+    "contract_version": {"const": "v0001"},
+    "created_at": {"$ref": "#/$defs/utc_datetime"},
+    "run_id": {"$ref": "#/$defs/non_empty_string"},
+    "status": {"enum": ["completed", "rejected", "failed", "dry_run"]},
+    "source": {"$ref": "#/$defs/source"},
+    "detection": {"$ref": "#/$defs/detection"},
+    "adapter": {"$ref": "#/$defs/adapter"},
+    "canonical_output": {"$ref": "#/$defs/canonical_output"},
+    "conservation": {"$ref": "#/$defs/conservation"},
+    "lineage": {"$ref": "#/$defs/lineage"}
+  },
+  "$defs": {
+    "non_empty_string": {"type": "string", "minLength": 1},
+    "nullable_string": {"type": ["string", "null"]},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "not": {"pattern": "^(?:[A-Za-z]:|[/\\\\])"}
+    },
+    "utc_datetime": {"type": "string", "format": "date-time", "pattern": "Z$"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_file_id",
+        "project_relative_path",
+        "sha256",
+        "size_bytes",
+        "container_type",
+        "encoding",
+        "immutable_verified"
+      ],
+      "properties": {
+        "source_file_id": {"$ref": "#/$defs/non_empty_string"},
+        "project_relative_path": {"$ref": "#/$defs/relative_path"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "size_bytes": {"type": "integer", "minimum": 0},
+        "container_type": {"enum": ["json_object", "json_array", "jsonl", "zip", "unknown"]},
+        "encoding": {"$ref": "#/$defs/non_empty_string"},
+        "immutable_verified": {"type": "boolean"}
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format_family", "fingerprint_version", "matched", "evidence", "exclusions"],
+      "properties": {
+        "format_family": {"$ref": "#/$defs/non_empty_string"},
+        "fingerprint_version": {"$ref": "#/$defs/non_empty_string"},
+        "matched": {"type": "boolean"},
+        "evidence": {"type": "array", "items": {"type": "string"}},
+        "exclusions": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "detection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "format_family",
+        "fingerprint_version",
+        "registry_version",
+        "candidates",
+        "stop_reason"
+      ],
+      "properties": {
+        "status": {"enum": ["exact", "rejected", "ambiguous"]},
+        "format_family": {"$ref": "#/$defs/nullable_string"},
+        "fingerprint_version": {"$ref": "#/$defs/nullable_string"},
+        "registry_version": {"$ref": "#/$defs/non_empty_string"},
+        "candidates": {"type": "array", "items": {"$ref": "#/$defs/candidate"}},
+        "stop_reason": {"$ref": "#/$defs/nullable_string"}
+      }
+    },
+    "adapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "family",
+        "version",
+        "entry_point",
+        "script_sha256",
+        "native_passthrough",
+        "status"
+      ],
+      "properties": {
+        "family": {"$ref": "#/$defs/non_empty_string"},
+        "version": {"$ref": "#/$defs/non_empty_string"},
+        "entry_point": {"$ref": "#/$defs/relative_path"},
+        "script_sha256": {"$ref": "#/$defs/sha256"},
+        "native_passthrough": {"type": "boolean"},
+        "status": {"enum": ["completed", "rejected", "failed", "dry_run"]}
+      }
+    },
+    "canonical_output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "contract_version",
+        "project_relative_path",
+        "sha256",
+        "validation_report_path",
+        "validation_report_sha256",
+        "lineage_index_path",
+        "lineage_index_sha256",
+        "contract_valid"
+      ],
+      "properties": {
+        "schema_version": {"const": "canonical_conversation_ingress_v0001"},
+        "contract_version": {"const": "v0001"},
+        "project_relative_path": {"$ref": "#/$defs/relative_path"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "validation_report_path": {"$ref": "#/$defs/relative_path"},
+        "validation_report_sha256": {"$ref": "#/$defs/sha256"},
+        "lineage_index_path": {"$ref": "#/$defs/relative_path"},
+        "lineage_index_sha256": {"$ref": "#/$defs/sha256"},
+        "contract_valid": {"type": "boolean"}
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["conversations", "nodes", "messages", "content_parts", "event_times"],
+      "properties": {
+        "conversations": {"type": "integer", "minimum": 0},
+        "nodes": {"type": "integer", "minimum": 0},
+        "messages": {"type": "integer", "minimum": 0},
+        "content_parts": {"type": "integer", "minimum": 0},
+        "event_times": {"type": "integer", "minimum": 0}
+      }
+    },
+    "conservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_counts",
+        "output_counts",
+        "dropped_records",
+        "degraded_records",
+        "extension_preserved_records",
+        "unmapped_records",
+        "source_ids_reused",
+        "stable_ids_synthesized",
+        "sequence_relationships_derived",
+        "counts_reconciled",
+        "identities_unique",
+        "graph_integrity",
+        "time_semantic_status_counts"
+      ],
+      "properties": {
+        "input_counts": {"$ref": "#/$defs/counts"},
+        "output_counts": {"$ref": "#/$defs/counts"},
+        "dropped_records": {"type": "integer", "minimum": 0},
+        "degraded_records": {"type": "integer", "minimum": 0},
+        "extension_preserved_records": {"type": "integer", "minimum": 0},
+        "unmapped_records": {"type": "integer", "minimum": 0},
+        "source_ids_reused": {"type": "integer", "minimum": 0},
+        "stable_ids_synthesized": {"type": "integer", "minimum": 0},
+        "sequence_relationships_derived": {"type": "integer", "minimum": 0},
+        "counts_reconciled": {"type": "boolean"},
+        "identities_unique": {"type": "boolean"},
+        "graph_integrity": {"type": "boolean"},
+        "time_semantic_status_counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["verified", "unverified", "ambiguous", "invalid", "missing"],
+          "properties": {
+            "verified": {"type": "integer", "minimum": 0},
+            "unverified": {"type": "integer", "minimum": 0},
+            "ambiguous": {"type": "integer", "minimum": 0},
+            "invalid": {"type": "integer", "minimum": 0},
+            "missing": {"type": "integer", "minimum": 0}
+          }
+        }
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_to_canonical_traceable", "raw_unchanged", "warnings", "issues"],
+      "properties": {
+        "source_to_canonical_traceable": {"type": "boolean"},
+        "raw_unchanged": {"type": "boolean"},
+        "warnings": {"type": "array", "items": {"type": "string"}},
+        "issues": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

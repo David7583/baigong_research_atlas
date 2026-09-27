@@ -1,0 +1,83 @@
+[
+  {
+    "source": "staging/scripts/action/development/scripts/research_assistant/research_ai_v0001.py",
+    "target": "scripts/action/development/scripts/research_assistant/research_ai_v0001.py",
+    "source_sha256": "4c1f28ed4444a6f941d27e622b13c0331492151a32a06cb299a8fd2c025531a6",
+    "target_sha256": "af0cb61584d62b794201e9b9481c02f0785564e35b0f6092c8e87ae3a637e9d8",
+    "ast_equal": true,
+    "allowed_change": "metadata path only",
+    "archived_reference_sha256": "08c12e56562e6d67fcd05d173263d6064310d42b7f3ffe107979f872ae2c0351"
+  },
+  {
+    "source": "staging/scripts/action/development/scripts/research_assistant/research_assistant_v0001.py",
+    "target": "scripts/action/development/scripts/research_assistant/research_assistant_v0001.py",
+    "source_sha256": "78dfb9c4a8a2c40bc450b039e7cb1428ebcd0c4b76492ca25b3d9dade856a878",
+    "target_sha256": "2c7b1510b8c881c3fbaba778cef49cf69a133def03edb21836e0e742bbd2e1f9",
+    "ast_equal": false,
+    "allowed_change": "describe now accurately lists existing SQLite/DuckDB targets",
+    "archived_reference_sha256": "deea5427f86520b92c85d944639f9c4513752b4d3cb7e8ca27f4086ce29f7d0d"
+  },
+  {
+    "source": "staging/scripts/action/development/scripts/research_assistant/research_harness_bridge_v0001.py",
+    "target": "scripts/action/development/scripts/research_assistant/research_harness_bridge_v0001.py",
+    "source_sha256": "80a5febff6f15dec236cd45b8669337c91c2a78bd2daff00d2263ecfd323ee45",
+    "target_sha256": "67e665abe58e59558860e220e9609155b1f7305629bb7a4a31177b088522081f",
+    "ast_equal": true,
+    "allowed_change": "metadata path only",
+    "archived_reference_sha256": "f464d617000ccf7aae2a7789fafcaba26673bbc1564ad41959ea567e7b83c2e9"
+  },
+  {
+    "source": "staging/scripts/action/development/scripts/research_assistant/research_index_v0001.py",
+    "target": "scripts/action/development/scripts/research_assistant/research_index_v0001.py",
+    "source_sha256": "690b78320835ddd0e7a4e1f075555ff1557fc5ffe0c392ec8d3be8938cb05388",
+    "target_sha256": "c2f969a6ba5cebade42c743df98e3ec6297e8bae1ad9f286d0bc280067302671",
+    "ast_equal": true,
+    "allowed_change": "metadata path only",
+    "archived_reference_sha256": "b430550ca28bb1c160f4b1c78a2d781328d9c90d1467051503868cb89a74e5e1"
+  },
+  {
+    "source": "staging/scripts/action/development/scripts/research_assistant/research_ingestion_v0001.py",
+    "target": "scripts/action/development/scripts/research_assistant/research_ingestion_v0001.py",
+    "source_sha256": "d3cf57b9d7f939c95a70fe489479a9d455b73149eeb98fd65c5fb1943215fcaf",
+    "target_sha256": "ba81c763aeef390a0b7c51882bf373b2b204344cbae16a2c1dc5271f33a4d67a",
+    "ast_equal": true,
+    "allowed_change": "metadata path only",
+    "archived_reference_sha256": "d3bbea0fd553fa7c1a9c48017c3764827235c78d86afe40eae9f99ae2693ab6f"
+  },
+  {
+    "source": "staging/scripts/action/development/scripts/research_assistant/research_ledger_v0001.py",
+    "target": "scripts/action/development/scripts/research_assistant/research_ledger_v0001.py",
+    "source_sha256": "b200af5126d137e804b00200ea6a1594608bb780ba65244cd0d1180bbc0a89da",
+    "target_sha256": "c2655f6742b95dd2ebc4c2942017f58b87a9f5a0703b11e75ba378b6815de9d9",
+    "ast_equal": true,
+    "allowed_change": "metadata path only",
+    "archived_reference_sha256": "08f179d9c210efead265ed4cfc7bf62a29dcf27a337944697a54ade621185f50"
+  },
+  {
+    "source": "staging/scripts/action/development/scripts/research_assistant/research_retrieval_v0001.py",
+    "target": "scripts/action/development/scripts/research_assistant/research_retrieval_v0001.py",
+    "source_sha256": "7f2401854965423c1c86c4efcf705ee9f9de785bf2a98e3e937384872622212e",
+    "target_sha256": "c3aefea01483c18c4bf0ac205df800050975a90d44b95523324618b0f9b187d3",
+    "ast_equal": true,
+    "allowed_change": "metadata path only",
+    "archived_reference_sha256": "830b6fb2fafdbe6152049c362d56b6317e4cd6312eb1256c00e73677742029a5"
+  },
+  {
+    "source": "staging/scripts/action/development/scripts/research_assistant/research_ui_v0001.py",
+    "target": "scripts/action/development/scripts/research_assistant/research_ui_v0001.py",
+    "source_sha256": "854a62af4c97a595726cb1e7a023f604214631522037a476064f998b353e0dfe",
+    "target_sha256": "9e9f2ea418a2f376c44a1a67d6be584f833befed6cb469ffb5ba51354e4b573d",
+    "ast_equal": false,
+    "allowed_change": "formal default config and current lifecycle UI copy",
+    "archived_reference_sha256": "0568241e1c72c8b4707c0f9104e0544bbf68dcb8fc7f817fe893a0a1d0d7ce73"
+  },
+  {
+    "source": "staging/scripts/action/skill/research_continuity/research_continuity_v0001.py",
+    "target": "scripts/action/skill/research_continuity/research_continuity_v0001.py",
+    "source_sha256": "82cecd10c20b52cd80d01fe343966c64da9d18aacdcfd2b55597158881a23099",
+    "target_sha256": "e5a8d90cba4ca9718de7fcd2b59876f4acf156a19e6ed37e2dc2fb8521041d5f",
+    "ast_equal": true,
+    "allowed_change": "metadata path only",
+    "archived_reference_sha256": "b283016029a73661be5387936bb60a0d64104d1b986601616c4e330ace3766b4"
+  }
+]

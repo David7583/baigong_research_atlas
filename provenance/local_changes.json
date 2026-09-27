@@ -1,0 +1,8 @@
+[
+  {
+    "target": "scripts/orchestration/action/data_action_chain_pipeline_v0019.py",
+    "source_sha256": "bfb740706bf829006a73339b42cdaf9a5ac5731b406928201577dcc8c970a62c",
+    "local_sha256": "346076a11fa254293b1dbfcf56202eb369ee56ef2f33948e7c52e3e1b90e8a4f",
+    "reason": "Optional bounded canonical/structural workspace paths for Windows formal deployment; original defaults and downstream checks retained"
+  }
+]

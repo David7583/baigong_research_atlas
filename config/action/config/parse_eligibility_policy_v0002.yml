@@ -1,0 +1,154 @@
+meta:
+  header_type: meta
+  source: Claude Conversation
+  date: "2026-03-03"
+  theme:
+    - parse eligibility
+    - value-level observation
+    - parsing governance
+  tags:
+    - eligibility
+    - parsing
+    - threshold
+    - v0002
+  notes: >
+    v0002 policy for parse eligibility decision.
+    Consumes profile_string_values_v0002.py observation outputs.
+    Replaces v0001 single-entropy gating with multi-dimensional rules.
+    No semantic inference is permitted at this stage.
+    v0002 changes -
+    Removed freeze_high_entropy (aggregate entropy alone fails on mixed content).
+    Added entropy_by_block rules to replace aggregate entropy as primary signal.
+    Added line_structure protective ALLOW rule for structured content.
+    Added block_transitions encoding damage detection.
+    Retained control_ratio rules from v0001.
+    Introduced match_mode all for multi-condition rules.
+    Introduced allow_override for protective ALLOW rules.
+  status: active
+  updatable: true
+  lineage:
+    - profile_string_values_v0002.py
+    - parse_eligibility_policy_v0001.yml
+    - header_system_guide_v0001.md
+  managed_by: manual_registry_v0001.py
+  registered_by: manual_registry_v0001.py
+  updated_via: manual_update_only
+
+
+policy:
+  name: parse_eligibility
+  version: v0002
+  description: >
+    Eligibility decision policy consuming v0002 multi-dimensional
+    observation outputs. Uses per-block entropy, line structure,
+    and block transition metrics for mixed-content scenarios
+    (CJK, Latin, code, math formulas).
+
+
+decision_order:
+  - FREEZE
+  - DELAY
+  - ALLOW
+
+
+defaults:
+  decision: ALLOW
+  on_missing_metric: DELAY
+
+
+thresholds:
+
+  entropy_by_block:
+    block_entropy_max: 1.5
+    block_dominance_min: 0.5
+
+  entropy:
+    avg_max_combined: 5.5
+
+  unicode:
+    control_ratio_max: 0.01
+    control_ratio_freeze: 0.05
+
+  block_transitions:
+    density_max_combined: 0.4
+
+  line_structure:
+    indented_line_ratio_min: 0.3
+    paired_symbol_line_ratio_min: 0.3
+
+
+rules:
+
+  # ALLOW protective rule (structured content)
+
+  - id: allow_structured_content
+    description: >
+      Protect structured-form content from false rejection.
+      High indentation ratio combined with high paired symbol
+      ratio indicates stable physical structure that should
+      always enter the parsing pipeline.
+      This rule is protective only and does not assert any semantic type.
+    match_mode: all
+    allow_override: true
+    when:
+      line_structure.indented_line_ratio:
+        ge: ${thresholds.line_structure.indented_line_ratio_min}
+      line_structure.paired_symbol_line_ratio:
+        ge: ${thresholds.line_structure.paired_symbol_line_ratio_min}
+    decision: ALLOW
+
+
+  # FREEZE rules
+
+  - id: freeze_repetitive_dominant_block
+    description: >
+      Freeze when a dominant Unicode block has extremely low
+      internal entropy, indicating repetitive or junk content.
+      Both conditions must hold - block dominance over 50 percent
+      AND that block internal entropy below 1.5.
+      Uses composite evaluation in decide_parse_eligibility_v0002.
+    match_mode: all
+    when:
+      _composite: dominant_block_low_entropy
+      _params:
+        block_entropy_max: ${thresholds.entropy_by_block.block_entropy_max}
+        block_dominance_min: ${thresholds.entropy_by_block.block_dominance_min}
+    decision: FREEZE
+
+  - id: freeze_extreme_control_chars
+    description: >
+      Freeze when strict control character ratio (excluding newline,
+      tab, carriage return) is extreme, indicating binary or corrupted data.
+    match_mode: any
+    when:
+      unicode.control_ratio_strict:
+        gt: ${thresholds.unicode.control_ratio_freeze}
+    decision: FREEZE
+
+
+  # DELAY rules
+
+  - id: delay_control_char_ratio
+    description: >
+      Delay parsing when strict control character ratio exceeds
+      safe operational limits. Retained from v0001, updated to
+      use control_ratio_strict to avoid false triggers from whitespace.
+    match_mode: any
+    when:
+      unicode.control_ratio_strict:
+        gt: ${thresholds.unicode.control_ratio_max}
+    decision: DELAY
+
+  - id: delay_encoding_damage
+    description: >
+      Delay when high aggregate entropy combines with
+      extreme block transition density, suggesting
+      encoding corruption or garbled data.
+      Both conditions must be met simultaneously.
+    match_mode: all
+    when:
+      entropy.avg:
+        gt: ${thresholds.entropy.avg_max_combined}
+      block_transitions.transition_density:
+        gt: ${thresholds.block_transitions.density_max_combined}
+    decision: DELAY

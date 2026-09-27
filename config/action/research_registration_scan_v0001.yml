@@ -1,0 +1,110 @@
+scan_root: scripts/action
+scan_formats:
+- name: hash_line_comment
+  extensions:
+  - .py
+  - .pyw
+  - .ps1
+  - .sh
+  - .bash
+  - .zsh
+  - .rb
+  - .pl
+  - .r
+  filenames:
+  - Dockerfile
+  - Makefile
+  - Jenkinsfile
+  line_prefixes:
+  - '#'
+- name: slash_line_comment
+  extensions:
+  - .js
+  - .jsx
+  - .mjs
+  - .cjs
+  - .ts
+  - .tsx
+  - .java
+  - .c
+  - .h
+  - .cc
+  - .cpp
+  - .cxx
+  - .hpp
+  - .cs
+  - .go
+  - .rs
+  - .kt
+  - .kts
+  - .swift
+  - .dart
+  line_prefixes:
+  - //
+- name: dash_line_comment
+  extensions:
+  - .sql
+  - .lua
+  - .hs
+  line_prefixes:
+  - --
+- name: objective_c_or_matlab_comment
+  extensions:
+  - .m
+  line_prefixes:
+  - //
+  - '%'
+- name: vb_line_comment
+  extensions:
+  - .vb
+  - .vbs
+  line_prefixes:
+  - ''''
+- name: batch_line_comment
+  extensions:
+  - .bat
+  - .cmd
+  line_prefixes:
+  - REM
+  - '::'
+  case_insensitive: true
+- name: markup_block_comment
+  extensions:
+  - .html
+  - .htm
+  - .xml
+  block_start: <!--
+  block_end: -->
+alias_meta_parsing:
+  keyword: ALIAS_META
+  end_conditions:
+  - type: separator
+    pattern: ^#\s*={3,}\s*$
+  - type: empty_line
+    pattern: ^\s*$
+  - type: non_comment
+    pattern: ^[^#]
+  field_pattern: ^#\s*([a-z_]+)\s*:\s*(.*)$
+  list_item_pattern: ^#\s*-\s+(.+)$
+exclude_dirs:
+- adapters
+- anchor
+- derivation
+- infrastructures
+- native_plugin
+- pipelines
+- tools
+- vector
+always_exclude_dirs:
+- __pycache__
+- .git
+- node_modules
+- .venv
+- venv
+- aliases
+- archive
+always_exclude_files:
+- __init__.py
+output_jsonl_path: actioning/research_registration/scripts.jsonl
+extract_header_raw: true
+last_scan_at: "2026-09-27T09:41:14Z"

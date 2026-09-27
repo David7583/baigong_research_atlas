@@ -1,0 +1,50 @@
+version: v0001
+family: ingest_instance_units
+role: semantic_content_instance_identity_rules
+
+canonicalization:
+  source_field: "unit_text"
+  normalize_line_endings: true
+  unicode_normalization: NFC
+  trim_whitespace: true
+  collapse_internal_whitespace: true
+  case_folding: false
+  fullwidth_to_halfwidth: false
+  punctuation_normalization: false
+
+identity_anchor:
+  algorithm: sha256
+  components:
+    - concept_id
+    - asset_id
+    - path
+    - value_index
+    - segment_index
+    - sentence_index
+    - char_start
+    - char_end
+  null_representation: "NULL"
+
+validation:
+  required_fields:
+    - unit_text
+    - asset_id
+    - path
+    - value_index
+    - segment_index
+    - sentence_index
+  optional_fields:
+    - char_start
+    - char_end
+  allow_null_position: true
+
+decision_gate:
+  enabled: false
+  allow_value: "ALLOW"
+
+schema:
+  schema_version_value: v0001
+  instance_type: semantic_text_observation
+
+runtime:
+  deduplicate_within_run: true

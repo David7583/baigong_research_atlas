@@ -1,0 +1,50 @@
+version: v0001
+family: ingest_concept_units
+role: concept_identity_rules
+
+# ============================================================
+# 一、文本规范化规则（canonicalization）
+# ============================================================
+canonicalization:
+  source_field: "unit_text"         # 关键修正：对焦输入文件中的文本字段
+  unicode_normalization: NFC
+  trim_whitespace: true
+  collapse_internal_whitespace: true
+  normalize_line_endings: true
+  case_folding: false
+  fullwidth_to_halfwidth: false
+  punctuation_normalization: false
+
+# ============================================================
+# 二、内容哈希规则（identity hash）
+# ============================================================
+identity_hash:
+  algorithm: sha256
+  encoding: utf-8
+  output: hex_lowercase
+  include_fields:
+    - canonical_text
+  salt: null
+
+# ============================================================
+# 三、concept_id 生成规则
+# ============================================================
+concept_id:
+  source: content_hash
+  format: direct
+  prefix: null
+
+# ============================================================
+# 四、schema 与兼容性声明
+# ============================================================
+schema:
+  schema_version_source: fixed
+  schema_version_value: v0001
+  incompatible_change_requires_new_version: true
+
+# ============================================================
+# 五、Decision 闸门规则
+# ============================================================
+decision_gate:
+  enabled: true                    # 确保方案 B 拦截逻辑生效
+  allow_value: "ALLOW"

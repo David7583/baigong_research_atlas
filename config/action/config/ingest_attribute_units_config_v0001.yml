@@ -1,0 +1,159 @@
+version: v0001
+family: ingest_attribute_units
+role: attribute_declaration_rules
+
+# ============================================================
+# 一、文本规范化规则
+# ============================================================
+canonicalization:
+  source_field: "unit_text"
+  unicode_normalization: NFC
+  trim_whitespace: true
+  collapse_internal_whitespace: true
+  normalize_line_endings: true
+  case_folding: false
+  fullwidth_to_halfwidth: false
+  punctuation_normalization: false
+
+
+# ============================================================
+# 二、内容哈希规则
+# ============================================================
+identity_hash:
+  algorithm: sha256
+  encoding: utf-8
+  output: hex_lowercase
+  include_fields:
+    - canonical_text
+  salt: null
+
+
+# ============================================================
+# 三、属性映射规则
+# ============================================================
+attribute_mappings:
+
+  occurrence_count:
+    source_field: "occurrence_count"
+    skip_if_null: true
+
+  path_diversity:
+    source_field: "path_diversity"
+    skip_if_null: true
+
+  dominant_path_ratio:
+    source_field: "dominant_path_ratio"
+    skip_if_null: true
+
+  decision:
+    source_field: "decision"
+    skip_if_null: true
+
+  boundary_status:
+    source_field: "decision_basis.boundary_status"
+    skip_if_null: true
+
+  noise_risk:
+    source_field: "decision_basis.noise_risk"
+    skip_if_null: true
+
+  structural_role:
+    source_field: "decision_basis.structural_role"
+    skip_if_null: true
+
+  audit_confidence:
+    source_field: "audit_confidence"
+    skip_if_null: true
+
+
+# ============================================================
+# 四、属性 Schema 校验
+# ============================================================
+attribute_schema:
+
+  reject_unknown_attribute: true
+
+  namespaces:
+
+    occurrence_count:
+      allowed_values: null
+
+    path_diversity:
+      allowed_values: null
+
+    dominant_path_ratio:
+      allowed_values: null
+
+    audit_confidence:
+      allowed_values: null
+
+    decision:
+      allowed_values:
+        - ALLOW
+        - DELAY
+        - FREEZE
+
+    boundary_status:
+      allowed_values:
+        - OK
+        - UNSTABLE
+        - ANOMALOUS
+        - SKIP
+
+    noise_risk:
+      allowed_values:
+        - low
+        - medium
+        - high
+
+    structural_role:
+      allowed_values:
+        - stable
+        - diffuse
+        - incidental
+
+
+# ============================================================
+# 五、Schema 声明
+# ============================================================
+schema:
+  schema_version_source: fixed
+  schema_version_value: v0001
+  incompatible_change_requires_new_version: true
+
+
+# ============================================================
+# 六、对象绑定
+# ============================================================
+object_binding:
+  default_object_type: concept
+  allowed_object_types:
+    - concept
+
+
+# ============================================================
+# 七、属性状态机
+# ============================================================
+state_model:
+  allowed_states:
+    - active
+    - superseded
+    - revoked
+  default_state: active
+  allow_direct_supersede: false
+
+
+# ============================================================
+# 八、冲突策略
+# ============================================================
+conflict_policy:
+  duplicate_resolution: keep_last
+  allow_multiple_active: false
+
+
+# ============================================================
+# 九、Decision Gate
+# ============================================================
+decision_gate:
+  enabled: true
+  allow_value: "ALLOW"

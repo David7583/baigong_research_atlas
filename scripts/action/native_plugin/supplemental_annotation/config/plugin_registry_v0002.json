@@ -1,0 +1,14 @@
+{
+  "schema_version": "native_plugin_registry_v0001",
+  "contract_version": "supplemental_annotation_contract_v0001",
+  "source_access_contract_version": "supplemental_annotation_source_access_v0001",
+  "plugins": [
+    {
+      "name": "temporal_annotation",
+      "version": "v0001",
+      "capability": "supplemental_annotation",
+      "entry_point": "plugins/temporal_annotation/temporal_annotation_plugin_v0001.py",
+      "source_access": "not_required"
+    }
+  ]
+}

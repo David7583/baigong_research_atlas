@@ -1,0 +1,638 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:local:experience:annotation:v0001",
+  "title": "5W1H-ST immutable annotation 0.1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "lineage",
+    "anchor_id",
+    "payload",
+    "provenance",
+    "field_status",
+    "extensions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "lineage": {
+      "const": "action"
+    },
+    "anchor_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "payload": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "field_status": {
+      "type": "object"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "annotation_type": {
+                "const": "context_5w1h"
+              }
+            },
+            "required": [
+              "annotation_type"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "how",
+              "what",
+              "when",
+              "where",
+              "who",
+              "why"
+            ],
+            "properties": {
+              "what": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "when": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "who": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "how": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "where": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "why": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "annotation_type": {
+                "const": "state_before"
+              }
+            },
+            "required": [
+              "annotation_type"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "active_config",
+              "known_constraints",
+              "known_issues",
+              "module_state",
+              "relevant_files",
+              "system_version"
+            ],
+            "properties": {
+              "known_constraints": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "system_version": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "known_issues": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "active_config": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "module_state": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "relevant_files": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "annotation_type": {
+                "const": "state_after"
+              }
+            },
+            "required": [
+              "annotation_type"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "active_config",
+              "known_constraints",
+              "known_issues",
+              "module_state",
+              "relevant_files",
+              "system_version"
+            ],
+            "properties": {
+              "known_constraints": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "system_version": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "known_issues": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "active_config": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "module_state": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "relevant_files": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "annotation_type": {
+                "const": "action"
+              }
+            },
+            "required": [
+              "annotation_type"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "execution_ref",
+              "executor_ref",
+              "name",
+              "occurred_at",
+              "parameters",
+              "source_ref_ids",
+              "type"
+            ],
+            "properties": {
+              "name": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "parameters": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "occurred_at": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "type": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "execution_ref": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "executor_ref": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "source_ref_ids": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "annotation_type": {
+                "const": "result"
+              }
+            },
+            "required": [
+              "annotation_type"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "artifact_refs",
+              "data_delta",
+              "errors",
+              "performance_delta",
+              "source_ref_ids",
+              "status",
+              "test_refs"
+            ],
+            "properties": {
+              "data_delta": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "test_refs": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "artifact_refs": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "status": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "errors": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "source_ref_ids": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "performance_delta": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "annotation_type": {
+                "const": "evaluation"
+              }
+            },
+            "required": [
+              "annotation_type"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "items"
+            ],
+            "properties": {
+              "items": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "annotation_type": {
+                "const": "decision"
+              }
+            },
+            "required": [
+              "annotation_type"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "authority_kind",
+              "conditions",
+              "decided_at",
+              "decided_by",
+              "evaluation_refs",
+              "rationale",
+              "scope",
+              "value"
+            ],
+            "properties": {
+              "conditions": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "authority_kind": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "rationale": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "decided_by": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "decided_at": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "evaluation_refs": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "scope": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "value": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "annotation_type": {
+                "const": "transition"
+              }
+            },
+            "required": [
+              "annotation_type"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "action_refs",
+              "dependencies",
+              "exceptions",
+              "executor",
+              "inputs",
+              "interpretation_kind",
+              "outputs",
+              "parameters",
+              "side_effects",
+              "source_ref_ids",
+              "state_after_refs",
+              "state_before_refs"
+            ],
+            "properties": {
+              "parameters": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "inputs": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "dependencies": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "action_refs": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "exceptions": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "side_effects": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "outputs": {
+                "type": [
+                  "null",
+                  "object"
+                ]
+              },
+              "source_ref_ids": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "state_before_refs": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              },
+              "executor": {
+                "type": [
+                  "string",
+                  "object",
+                  "null"
+                ]
+              },
+              "interpretation_kind": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "state_after_refs": {
+                "type": [
+                  "null",
+                  "array"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

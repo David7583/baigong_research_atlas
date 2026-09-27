@@ -1,0 +1,35 @@
+# ============================================================
+# normalize_unit_variants_policy_v0001.yml
+# 中文名: 结构单元形式变体规范化策略
+# version: v0001
+#
+# 本 policy 控制 normalize_unit_variants 脚本的规范化行为。
+# 所有规则均为形式层操作，不涉及语义判断。
+# 修改本文件后重跑脚本即可生效，无需改代码。
+# ============================================================
+
+policy_version: v0001
+
+# Unicode 正规化（NFKC）
+# 将兼容字符统一为标准形式，例如全角数字→半角数字
+unicode_nfkc: true
+
+# 去除首尾空白
+strip: true
+
+# 压缩连续空白为单个空格
+collapse_whitespace: true
+
+# 中文标点→英文标点映射
+# 设为 false 可保留原始标点形式
+normalize_punctuation: true
+
+# 连续重复标点压缩（如 "!!!" → "!"）
+collapse_punctuation: true
+
+# 参与压缩的标点字符集
+collapse_punct_chars: "!?.,;:"
+
+# 统一转小写
+# 注意：这会影响英文大小写区分，对中文无影响
+lowercase: true

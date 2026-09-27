@@ -1,0 +1,87 @@
+# ============================================================
+# task_group.yml
+# 任务组 schema 声明
+# Used by: init_action_schema_v0002.py
+# ============================================================
+#
+# 任务组登记"功能的再次叠加"——承载更高层目标、功能组合规则、
+# 版本演化、状态流转和执行排序。
+#
+# 任务创建时不得同步创建功能块。只有任务经过大量重复调用并形成
+# 稳定复用价值后，才能通过 register_function_block 晋升为功能块。
+#
+# 数据来源：声明驱动（人/agent 主动登记任务）
+# ============================================================
+
+tables:
+
+  # ----------------------------------------------------------
+  # 1. task_registry —— 任务身份
+  # ----------------------------------------------------------
+  - table_name: task_registry
+    purpose: 登记由一个或多个功能再次编排形成的任务身份、名称和目的
+    columns:
+      - { name: task_id,           type: TEXT, nullable: false }  # UUID4 hex
+      - { name: task_name,         type: TEXT, nullable: false }
+      - { name: purpose,           type: TEXT, nullable: true }   # "为什么"，任务和功能的核心区别
+      - { name: registered_at,     type: TEXT, nullable: false }
+      - { name: registered_by,     type: TEXT, nullable: false }
+      - { name: registered_where,  type: TEXT, nullable: false }
+      - { name: status,            type: TEXT, nullable: false, default: "'pending'" }
+    primary_key: [task_id]
+    indexes:
+      - { name: idx_task_registry_name,   columns: [task_name] }
+      - { name: idx_task_registry_status, columns: [status] }
+
+  # ----------------------------------------------------------
+  # 2. task_versions —— 任务版本演化
+  # ----------------------------------------------------------
+  - table_name: task_versions
+    purpose: 登记任务的每一个版本（任务的组合规则会演化）
+    columns:
+      - { name: task_id,        type: TEXT, nullable: false }  # 引用 task_registry
+      - { name: version,        type: TEXT, nullable: false }
+      - { name: change_summary, type: TEXT, nullable: true }   # 这个版本相对于上一版的变化说明
+      - { name: created_at,     type: TEXT, nullable: false }
+      - { name: created_by,     type: TEXT, nullable: false }
+    primary_key: [task_id, version]
+    indexes:
+      - { name: idx_task_versions_created, columns: [created_at] }
+
+  # ----------------------------------------------------------
+  # 3. task_status_log —— 任务状态流转日志
+  # ----------------------------------------------------------
+  - table_name: task_status_log
+    purpose: 追加式日志，登记任务每一次状态变更（pending -> active -> completed -> ...）
+    columns:
+      - { name: log_id,         type: TEXT, nullable: false }  # UUID4 hex
+      - { name: task_id,        type: TEXT, nullable: false }  # 引用 task_registry
+      - { name: from_status,    type: TEXT, nullable: true }   # 第一次登记时为 NULL
+      - { name: to_status,      type: TEXT, nullable: false }
+      - { name: reason,         type: TEXT, nullable: true }
+      - { name: changed_at,     type: TEXT, nullable: false }
+      - { name: changed_by,     type: TEXT, nullable: false }
+    primary_key: [log_id]
+    indexes:
+      - { name: idx_task_status_log_task,    columns: [task_id] }
+      - { name: idx_task_status_log_changed, columns: [changed_at] }
+
+  # ----------------------------------------------------------
+  # 4. flow_definition —— 执行排序定义
+  # ----------------------------------------------------------
+  - table_name: flow_definition
+    purpose: 登记功能内部脚本、任务内部功能及功能块内部元素的统一执行顺序
+    columns:
+      - { name: flow_id,        type: TEXT,    nullable: false }  # UUID4 hex
+      - { name: scope,          type: TEXT,    nullable: false }  # 'function' / 'task' / 'function_block'
+      - { name: scope_id,       type: TEXT,    nullable: false }  # function_id / task_id / block_id
+      - { name: scope_version,  type: TEXT,    nullable: true }   # 任务版本（scope=task 时使用）
+      - { name: element_type,   type: TEXT,    nullable: false }  # 'function' / 'function_block' / 'script'
+      - { name: element_id,     type: TEXT,    nullable: false }  # 元素的 id
+      - { name: order_index,    type: INTEGER, nullable: false }  # 执行序号（0/1/2/...）
+      - { name: declared_at,    type: TEXT,    nullable: false }
+    primary_key: [flow_id]
+    indexes:
+      - { name: idx_flow_def_scope,   columns: [scope, scope_id] }
+      - { name: idx_flow_def_element, columns: [element_type, element_id] }
+      - { name: idx_flow_def_order,   columns: [scope, scope_id, order_index] }

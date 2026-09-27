@@ -1,0 +1,14 @@
+providers:
+  example:
+    authentication:
+      scheme: Bearer
+      header: Authorization
+    profiles:
+      default:
+        credential: research_example
+        protocol: openai_compatible
+        base_url: https://example.invalid/v1
+models:
+  - provider: example
+    model_id: replace-with-your-chat-model
+    capabilities: [text_generation]

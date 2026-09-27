@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "canonical_conversation_ingress_v0001.schema.json",
+  "title": "Canonical Conversation Ingress Contract v0001",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "dataset_id",
+    "source_envelope_id",
+    "canonicalized_at",
+    "contract_version",
+    "conversations",
+    "extensions"
+  ],
+  "properties": {
+    "schema_version": {"const": "canonical_conversation_ingress_v0001"},
+    "dataset_id": {"$ref": "#/$defs/non_empty_string"},
+    "source_envelope_id": {"$ref": "#/$defs/non_empty_string"},
+    "canonicalized_at": {"$ref": "#/$defs/utc_datetime"},
+    "contract_version": {"const": "v0001"},
+    "conversations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/conversation"}
+    },
+    "extensions": {"type": "object"}
+  },
+  "$defs": {
+    "non_empty_string": {"type": "string", "minLength": 1},
+    "nullable_string": {"type": ["string", "null"]},
+    "utc_datetime": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "source_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_file_id",
+        "source_path",
+        "source_index",
+        "source_id",
+        "source_value_sha256",
+        "mapping_method",
+        "loss_status"
+      ],
+      "properties": {
+        "source_file_id": {"$ref": "#/$defs/non_empty_string"},
+        "source_path": {"type": "string"},
+        "source_index": {"type": ["integer", "null"], "minimum": 0},
+        "source_id": {"$ref": "#/$defs/nullable_string"},
+        "source_value_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "mapping_method": {
+          "enum": [
+            "direct",
+            "renamed",
+            "normalized",
+            "derived_from_sequence",
+            "synthesized_stable_id",
+            "preserved_extension"
+          ]
+        },
+        "loss_status": {
+          "enum": ["lossless", "represented_in_extension", "degraded", "unmapped"]
+        }
+      }
+    },
+    "event_time": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_kind",
+        "raw_value",
+        "raw_type",
+        "normalized_utc",
+        "semantic_status",
+        "semantic_basis",
+        "source_ref"
+      ],
+      "properties": {
+        "event_kind": {"$ref": "#/$defs/non_empty_string"},
+        "raw_value": {
+          "type": ["string", "integer", "number", "null"]
+        },
+        "raw_type": {
+          "enum": ["unix_seconds", "iso8601", "string", "integer", "decimal", "unknown"]
+        },
+        "normalized_utc": {
+          "oneOf": [
+            {"$ref": "#/$defs/utc_datetime"},
+            {"type": "null"}
+          ]
+        },
+        "semantic_status": {
+          "enum": ["verified", "unverified", "ambiguous", "invalid", "missing"]
+        },
+        "semantic_basis": {"type": "string"},
+        "source_ref": {"$ref": "#/$defs/source_ref"}
+      }
+    },
+    "author": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "name", "source_role", "metadata"],
+      "properties": {
+        "role": {
+          "enum": ["user", "assistant", "system", "tool", "developer", "unknown"]
+        },
+        "name": {"$ref": "#/$defs/nullable_string"},
+        "source_role": {"$ref": "#/$defs/non_empty_string"},
+        "metadata": {"type": "object"}
+      }
+    },
+    "content_part": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "part_id",
+        "part_index",
+        "part_type",
+        "text",
+        "mime_type",
+        "uri",
+        "payload",
+        "source_ref",
+        "extensions"
+      ],
+      "properties": {
+        "part_id": {"$ref": "#/$defs/non_empty_string"},
+        "part_index": {"type": "integer", "minimum": 0},
+        "part_type": {
+          "enum": [
+            "text",
+            "image",
+            "audio",
+            "file",
+            "tool_call",
+            "tool_result",
+            "code",
+            "structured",
+            "unknown"
+          ]
+        },
+        "text": {"$ref": "#/$defs/nullable_string"},
+        "mime_type": {"$ref": "#/$defs/nullable_string"},
+        "uri": {"$ref": "#/$defs/nullable_string"},
+        "payload": {},
+        "source_ref": {"$ref": "#/$defs/source_ref"},
+        "extensions": {"type": "object"}
+      }
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content_type", "source_content_type", "parts", "metadata", "extensions"],
+      "properties": {
+        "content_type": {"$ref": "#/$defs/non_empty_string"},
+        "source_content_type": {"$ref": "#/$defs/nullable_string"},
+        "parts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/content_part"}
+        },
+        "metadata": {"type": "object"},
+        "extensions": {"type": "object"}
+      }
+    },
+    "message": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "message_id",
+        "author",
+        "content",
+        "status",
+        "recipient",
+        "channel",
+        "event_times",
+        "metadata",
+        "source_ref",
+        "extensions"
+      ],
+      "properties": {
+        "message_id": {"$ref": "#/$defs/non_empty_string"},
+        "author": {"$ref": "#/$defs/author"},
+        "content": {"$ref": "#/$defs/content"},
+        "status": {"$ref": "#/$defs/nullable_string"},
+        "recipient": {"$ref": "#/$defs/nullable_string"},
+        "channel": {"$ref": "#/$defs/nullable_string"},
+        "event_times": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/event_time"}
+        },
+        "metadata": {"type": "object"},
+        "source_ref": {"$ref": "#/$defs/source_ref"},
+        "extensions": {"type": "object"}
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "node_id",
+        "parent_node_id",
+        "child_node_ids",
+        "node_order",
+        "message",
+        "source_ref",
+        "extensions"
+      ],
+      "properties": {
+        "node_id": {"$ref": "#/$defs/non_empty_string"},
+        "parent_node_id": {"$ref": "#/$defs/nullable_string"},
+        "child_node_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/non_empty_string"}
+        },
+        "node_order": {"type": "integer", "minimum": 0},
+        "message": {
+          "oneOf": [
+            {"$ref": "#/$defs/message"},
+            {"type": "null"}
+          ]
+        },
+        "source_ref": {"$ref": "#/$defs/source_ref"},
+        "extensions": {"type": "object"}
+      }
+    },
+    "conversation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conversation_id",
+        "title",
+        "created_time",
+        "updated_time",
+        "current_node_id",
+        "nodes",
+        "metadata",
+        "source_ref",
+        "extensions"
+      ],
+      "properties": {
+        "conversation_id": {"$ref": "#/$defs/non_empty_string"},
+        "title": {"$ref": "#/$defs/nullable_string"},
+        "created_time": {
+          "oneOf": [
+            {"$ref": "#/$defs/event_time"},
+            {"type": "null"}
+          ]
+        },
+        "updated_time": {
+          "oneOf": [
+            {"$ref": "#/$defs/event_time"},
+            {"type": "null"}
+          ]
+        },
+        "current_node_id": {"$ref": "#/$defs/nullable_string"},
+        "nodes": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/node"}
+        },
+        "metadata": {"type": "object"},
+        "source_ref": {"$ref": "#/$defs/source_ref"},
+        "extensions": {"type": "object"}
+      }
+    }
+  }
+}

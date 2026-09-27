@@ -1,0 +1,177 @@
+# ============================================================
+# Config: scan_alias_meta_config_v0002.yml
+# 中文名: ALIAS_META 扫描器配置文件
+# Version: v0002
+# 服务于: scan_alias_meta_v0003.py
+# Layer: config
+# Main Layer: action
+#
+# 说明:
+#   本配置文件管理扫描器的运行参数。
+#   排除目录列表初始为空，由 flow_scan_alias_meta 交互后写入。
+#   上次扫描时间戳初始为空，由扫描器执行后自动写入。
+# ============================================================
+
+# ----------------------------------------------------------
+# 扫描根目录
+# 扫描器将从此目录开始递归查找所有子文件夹
+# ----------------------------------------------------------
+scan_root: "scripts/action"
+
+# ----------------------------------------------------------
+# 扫描文件类型与注释格式
+# extensions 按后缀匹配，filenames 用于无扩展名的脚本文件。
+# 每个文件类型只允许归属一种格式；扫描器会把对应注释临时归一化为 # 后解析。
+# ----------------------------------------------------------
+scan_formats:
+  - name: "hash_line_comment"
+    extensions:
+      - ".py"
+      - ".pyw"
+      - ".ps1"
+      - ".sh"
+      - ".bash"
+      - ".zsh"
+      - ".rb"
+      - ".pl"
+      - ".r"
+    filenames:
+      - "Dockerfile"
+      - "Makefile"
+      - "Jenkinsfile"
+    line_prefixes:
+      - "#"
+
+  - name: "slash_line_comment"
+    extensions:
+      - ".js"
+      - ".jsx"
+      - ".mjs"
+      - ".cjs"
+      - ".ts"
+      - ".tsx"
+      - ".java"
+      - ".c"
+      - ".h"
+      - ".cc"
+      - ".cpp"
+      - ".cxx"
+      - ".hpp"
+      - ".cs"
+      - ".go"
+      - ".rs"
+      - ".kt"
+      - ".kts"
+      - ".swift"
+      - ".dart"
+    line_prefixes:
+      - "//"
+
+  - name: "dash_line_comment"
+    extensions:
+      - ".sql"
+      - ".lua"
+      - ".hs"
+    line_prefixes:
+      - "--"
+
+  - name: "objective_c_or_matlab_comment"
+    extensions:
+      - ".m"
+    line_prefixes:
+      - "//"
+      - "%"
+
+  - name: "vb_line_comment"
+    extensions:
+      - ".vb"
+      - ".vbs"
+    line_prefixes:
+      - "'"
+
+  - name: "batch_line_comment"
+    extensions:
+      - ".bat"
+      - ".cmd"
+    line_prefixes:
+      - "REM"
+      - "::"
+    case_insensitive: true
+
+  - name: "markup_block_comment"
+    extensions:
+      - ".html"
+      - ".htm"
+      - ".xml"
+    block_start: "<!--"
+    block_end: "-->"
+
+# ----------------------------------------------------------
+# ALIAS_META 识别规则
+# keyword: ALIAS_META 块的识别关键词（起始标记）
+# 各语言注释会先归一化为 # 注释，再应用下列统一规则
+# end_conditions: 结束条件列表，命中任意一条即视为块结束
+#   - separator: 等号分隔线（# ===...）
+#   - empty_line: 空行（非注释行）
+#   - non_comment: 遇到非 # 开头的代码行
+# field_pattern: 字段行的正则匹配模式（# key: value）
+# list_item_pattern: 列表项的正则匹配模式（#   - item）
+# ----------------------------------------------------------
+alias_meta_parsing:
+  keyword: "ALIAS_META"
+  end_conditions:
+    - type: "separator"
+      pattern: "^#\\s*={3,}\\s*$"
+    - type: "empty_line"
+      pattern: "^\\s*$"
+    - type: "non_comment"
+      pattern: "^[^#]"
+  field_pattern: "^#\\s*([a-z_]+)\\s*:\\s*(.*)$"
+  list_item_pattern: "^#\\s*-\\s+(.+)$"
+
+# ----------------------------------------------------------
+# 排除目录
+# 初始为空列表，由 flow_scan_alias_meta 交互后写入
+# 支持相对路径（相对于 scan_root）和目录名匹配
+# ----------------------------------------------------------
+exclude_dirs: []
+
+# ----------------------------------------------------------
+# 始终排除的目录（不受用户选择影响）
+# 这些是系统级排除，不会出现在交互选择列表中
+# ----------------------------------------------------------
+always_exclude_dirs:
+  - "__pycache__"
+  - ".git"
+  - "node_modules"
+  - ".venv"
+  - "venv"
+  - "aliases"
+  - "archive"
+
+# ----------------------------------------------------------
+# 始终排除的文件名
+# ----------------------------------------------------------
+always_exclude_files:
+  - "__init__.py"
+
+# ----------------------------------------------------------
+# JSONL 输出路径
+# 扫描器产出的 JSONL 文件放入 actioning 功能产出区
+# 按脚本家族名归入对应子文件夹
+# 经入库器写入 action.db
+# ----------------------------------------------------------
+output_jsonl_path: "actioning/scan_alias_meta/scan_alias_meta_output.jsonl"
+
+# ----------------------------------------------------------
+# comment header 原文提取
+# 是否同时提取 ALIAS_META 之外的 comment header 原文
+# 提取后存入 header_purpose_raw 和 header_constraint_raw 字段
+# ----------------------------------------------------------
+extract_header_raw: true
+
+# ----------------------------------------------------------
+# 上次扫描时间戳
+# 由扫描器执行后自动写入，当前全量扫描暂不使用
+# ----------------------------------------------------------
+last_scan_at: "2026-09-08T11:30:34Z"

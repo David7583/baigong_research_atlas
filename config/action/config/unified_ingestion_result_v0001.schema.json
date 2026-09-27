@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "ingest_batch_id",
+    "source",
+    "processing_status",
+    "registration_status",
+    "parse_status",
+    "quality_status",
+    "body_ingestion_status",
+    "handoff_status",
+    "units",
+    "registration",
+    "downstream_receipt"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "unified_ingestion_result_v0001"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^r_[a-f0-9]{32}$"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "asset_id",
+        "source_hash",
+        "snapshot_id",
+        "managed_path",
+        "original_path",
+        "occurrence_id",
+        "preservation_status"
+      ],
+      "properties": {
+        "source_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "preservation_status": {
+          "enum": [
+            "preserved",
+            "dry_run"
+          ]
+        }
+      }
+    },
+    "quality_status": {
+      "enum": [
+        null,
+        "passed",
+        "partial",
+        "failed",
+        "uncertain"
+      ]
+    },
+    "processing_status": {
+      "enum": [
+        "dry_run",
+        "registration_only",
+        "body_prepared",
+        "ready_for_handoff",
+        "core_completed",
+        "failed"
+      ]
+    },
+    "body_ingestion_status": {
+      "enum": ["not_ingested", "completed"]
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "unit_id",
+          "content_kind",
+          "text",
+          "source_locator"
+        ],
+        "properties": {
+          "content_kind": {
+            "const": "extracted_text"
+          },
+          "text": {
+            "type": "string"
+          },
+          "source_locator": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "registration": {
+      "type": "object",
+      "properties": {
+        "content_kind": {
+          "const": "asset_registration"
+        }
+      }
+    }
+  }
+}

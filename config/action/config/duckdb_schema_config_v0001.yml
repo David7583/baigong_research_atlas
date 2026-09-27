@@ -1,0 +1,164 @@
+meta:
+  header_type: meta
+  source: manual_design
+  date: 2026-02-28
+  theme: [duckdb, derivation, analysis, action]
+  tags: [config, duckdb, schema, v0001]
+  notes: "DuckDB 派生层行动端分析子系统表结构配置"
+  status: active
+  updatable: true
+
+  lineage:
+    governed_by:
+      - 派生层手册_v0003
+      - 向量计算与版本控制规范_v0002
+
+  managed_by: init_duckdb_schema_v0001.py
+  registered_by: manual_registry_v0001.py
+  updated_via: manual_edit
+
+# ============================================================
+# duckdb_schema_config_v0001.yml
+# DuckDB 派生层行动端分析子系统表结构配置
+# ============================================================
+
+version: v0001
+
+driver: duckdb
+
+main_layer: action
+
+connection:
+  duckdb:
+    path: derivation/action/duckdb/action_data_analysis.duckdb
+
+# ============================================================
+# 表结构定义
+# ============================================================
+
+tables:
+
+  # ----------------------------------------------------------
+  # 1. 同步日志表（元信息）
+  # 记录每次从 SQL 同步的元信息
+  # ----------------------------------------------------------
+  sync_log: _sync_log
+
+  # ----------------------------------------------------------
+  # 2. Instance 同步表（追加式）
+  # 从 SQL instance_units 同步的数据，带 sync_id 版本标识
+  # ----------------------------------------------------------
+  instance_sync: instance_units_sync
+
+  # ----------------------------------------------------------
+  # 3. Concept 同步表（追加式）
+  # 从 SQL concept_units 同步的数据，带 sync_id 版本标识
+  # ----------------------------------------------------------
+  concept_sync: concept_units_sync
+
+# ============================================================
+# 字段定义
+# ============================================================
+
+fields:
+
+  sync_log:
+    sync_id: sync_id
+    source_db: source_db
+    source_table: source_table
+    record_count: record_count
+    started_at: started_at
+    finished_at: finished_at
+    script_name: script_name
+    script_version: script_version
+    source_db_hash: source_db_hash
+
+  instance_sync:
+    # 同步元信息字段
+    sync_id: sync_id
+    synced_at: synced_at
+    # 原始 SQL 字段（与 sql_writer_config 对齐）
+    instance_id: instance_id
+    unit_text_id: unit_text_id
+    asset_id: asset_id
+    path: path
+    value_index: value_index
+    segment_index: segment_index
+    sentence_index: sentence_index
+    char_start: char_start
+    char_end: char_end
+    content: content
+    content_hash: content_hash
+    created_at: created_at
+    schema_version: schema_version
+    run_id: run_id
+
+  concept_sync:
+    # 同步元信息字段
+    sync_id: sync_id
+    synced_at: synced_at
+    # 原始 SQL 字段（与 sql_writer_config 对齐）
+    unit_text_id: unit_text_id
+    unit_text: unit_text
+    content_hash: content_hash
+    first_seen_instance_id: first_seen_instance_id
+    created_at: created_at
+    schema_version: schema_version
+    run_id: run_id
+
+# ============================================================
+# 视图定义
+# 用于暴露"最新一次同步"的数据
+# ============================================================
+
+views:
+
+  instance_latest:
+    name: instance_units_latest
+    description: "最新一次同步的 instance 数据"
+    base_table: instance_sync
+    filter_by: sync_id
+    filter_source: sync_log
+
+  concept_latest:
+    name: concept_units_latest
+    description: "最新一次同步的 concept 数据"
+    base_table: concept_sync
+    filter_by: sync_id
+    filter_source: sync_log
+
+# ============================================================
+# 索引定义（DuckDB 自动优化，但可显式声明）
+# ============================================================
+
+indexes:
+
+  instance_sync:
+    - columns: [sync_id]
+    - columns: [instance_id]
+    - columns: [unit_text_id]
+    - columns: [asset_id, path, segment_index]
+    - columns: [content_hash]
+
+  concept_sync:
+    - columns: [sync_id]
+    - columns: [unit_text_id]
+    - columns: [content_hash]
+
+  sync_log:
+    - columns: [sync_id]
+    - columns: [finished_at]
+
+# ============================================================
+# 目录结构说明（供建库脚本参考）
+# ============================================================
+
+directory_structure:
+  derivation_root: derivation
+  layers:
+    understand:
+      duckdb: derivation/understand/duckdb
+      embedding: derivation/understand/embedding
+    action:
+      duckdb: derivation/action/duckdb
+      embedding: derivation/action/embedding

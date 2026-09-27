@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "ledger": "runtime/research/ledger.sqlite3",
+  "inbox": "runtime/research/inbox",
+  "publication_policy": "authority_first_explicit",
+  "source_ids": []
+}

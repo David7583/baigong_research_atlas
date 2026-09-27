@@ -1,0 +1,14 @@
+# Disabled template for dependency preflight only. No model or endpoint is supplied.
+# Research archive integration requires --vector-target none.
+version: v0002
+backend:
+  type: disabled
+  model_name: ''
+api:
+  endpoint: ''
+  auth_token_env: ''
+model:
+  name: ''
+  dimension: 0
+runtime:
+  max_retries: 0

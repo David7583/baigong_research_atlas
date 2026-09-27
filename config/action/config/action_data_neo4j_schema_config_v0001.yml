@@ -1,0 +1,91 @@
+# ============================================================
+# Neo4j Schema 配置
+# File: action_data_neo4j_schema_config_v0001.yml
+# Layer: derivation / action / neo4j
+# Version: v0001
+#
+# 本配置供 init_graph_schema 脚本读取
+# 定义 action 端图数据库的节点标签、关系类型、约束与索引
+#
+# 数据来源：三个 graph builder 的 JSON 输出
+#   - build_unit_cooccurrence_graph → CO_OCCURS_WITH
+#   - build_unit_adjacency_graph   → ADJACENT_TO
+#   - build_unit_hierarchy_graph   → CONTAINS
+#
+# 节点来源：register_structural_units（经 graph builder 透传）
+# 节点不区分 concept/instance，统一为 StructuralUnit
+# 将来如需区分，通过属性标记，不改标签
+#
+# Neo4j 是 schema-free 的，本配置定义的是约束和索引
+# 节点属性可随时扩展，不需要修改本配置
+# ============================================================
+
+# --------------------------------------------------
+# 节点标签
+# --------------------------------------------------
+node_labels:
+  - StructuralUnit
+
+# --------------------------------------------------
+# 节点核心属性（init 脚本建约束和索引用）
+# 实际写入时可能携带更多属性，schema-free 不受限制
+# --------------------------------------------------
+node_properties:
+  StructuralUnit:
+    unit_id:
+      type: "STRING"
+      unique: true          # 唯一性约束（自动创建索引）
+      description: "结构单元唯一标识，来自 register，格式为 u_sha1hash"
+    label:
+      type: "STRING"
+      index: true           # 普通索引，支持查找
+      description: "结构单元文本内容"
+    sync_id:
+      type: "STRING"
+      index: false
+      description: "同步批次标识，审计用"
+
+# --------------------------------------------------
+# 关系类型
+# --------------------------------------------------
+relationship_types:
+  CO_OCCURS_WITH:
+    direction: "undirected"   # 存储有向（按 unit_id 字母序），查询忽略方向
+    source: "build_unit_cooccurrence_graph"
+    properties:
+      weight: "INTEGER"
+      count: "INTEGER"
+
+  ADJACENT_TO:
+    direction: "directed"     # forward 方向：from → to
+    source: "build_unit_adjacency_graph"
+    properties:
+      weight: "INTEGER"
+      count: "INTEGER"
+      direction: "STRING"     # 恒为 "forward"（v0001）
+      distance: "INTEGER"     # 恒为 1（v0001）
+
+  CONTAINS:
+    direction: "directed"     # parent → child
+    source: "build_unit_hierarchy_graph"
+    properties:
+      weight: "INTEGER"
+      count: "INTEGER"
+
+# --------------------------------------------------
+# 约束（init 脚本执行）
+# --------------------------------------------------
+constraints:
+  - name: "unique_structural_unit_id"
+    label: "StructuralUnit"
+    property: "unit_id"
+    type: "UNIQUENESS"
+
+# --------------------------------------------------
+# 索引（init 脚本执行）
+# --------------------------------------------------
+indexes:
+  - name: "idx_structural_unit_label"
+    label: "StructuralUnit"
+    property: "label"
+    type: "RANGE"

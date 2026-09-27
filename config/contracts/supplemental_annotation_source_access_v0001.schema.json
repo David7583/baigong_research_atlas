@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "supplemental_annotation_source_access_v0001.schema.json",
+  "title": "Supplemental Annotation Source Access Contract v0001",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "access_id",
+    "created_at",
+    "status",
+    "requester",
+    "purpose",
+    "canonical_source",
+    "ingress_envelope",
+    "structural_completion",
+    "language_units",
+    "authorization",
+    "allowed_coordinates"
+  ],
+  "properties": {
+    "schema_version": {"const": "supplemental_annotation_source_access_v0001"},
+    "access_id": {"$ref": "#/$defs/non_empty_string"},
+    "created_at": {"$ref": "#/$defs/utc_datetime"},
+    "status": {"enum": ["authorized", "rejected", "dry_run"]},
+    "requester": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": {"$ref": "#/$defs/non_empty_string"},
+        "version": {"$ref": "#/$defs/non_empty_string"}
+      }
+    },
+    "purpose": {"enum": ["source_fact_annotation", "source_relation_annotation", "source_evidence_validation"]},
+    "canonical_source": {"$ref": "#/$defs/file_ref"},
+    "ingress_envelope": {"$ref": "#/$defs/file_ref"},
+    "structural_completion": {"$ref": "#/$defs/structural_completion_ref"},
+    "language_units": {"$ref": "#/$defs/language_units_ref"},
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "structural_completed",
+        "working_copy_matches_envelope",
+        "requested_source_matches_working_copy",
+        "canonical_hash_matches",
+        "language_units_belong_to_structural_run",
+        "stable_coordinates_complete",
+        "authorized"
+      ],
+      "properties": {
+        "structural_completed": {"type": "boolean"},
+        "working_copy_matches_envelope": {"type": "boolean"},
+        "requested_source_matches_working_copy": {"type": "boolean"},
+        "canonical_hash_matches": {"type": "boolean"},
+        "language_units_belong_to_structural_run": {"type": "boolean"},
+        "stable_coordinates_complete": {"type": "boolean"},
+        "authorized": {"type": "boolean"}
+      }
+    },
+    "allowed_coordinates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project_relative_path", "sha256", "record_count", "coordinate_fields"],
+      "properties": {
+        "project_relative_path": {"$ref": "#/$defs/relative_path"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "record_count": {"type": "integer", "minimum": 1},
+        "coordinate_fields": {
+          "const": ["asset_id", "path", "value_index", "source_value_sha1"]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "non_empty_string": {"type": "string", "minLength": 1},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "not": {"pattern": "^(?:[A-Za-z]:|[/\\\\])"}
+    },
+    "utc_datetime": {"type": "string", "format": "date-time", "pattern": "Z$"},
+    "file_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project_relative_path", "sha256"],
+      "properties": {
+        "project_relative_path": {"$ref": "#/$defs/relative_path"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "structural_completion_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project_relative_path",
+        "sha256",
+        "pipeline",
+        "pipeline_version",
+        "run_id",
+        "completion_status"
+      ],
+      "properties": {
+        "project_relative_path": {"$ref": "#/$defs/relative_path"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "pipeline": {"const": "structural_unit_governance_graph_pipeline"},
+        "pipeline_version": {"$ref": "#/$defs/non_empty_string"},
+        "run_id": {"$ref": "#/$defs/non_empty_string"},
+        "completion_status": {"const": "completed"}
+      }
+    },
+    "language_units_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project_relative_path",
+        "sha256",
+        "record_count",
+        "asset_count",
+        "path_count"
+      ],
+      "properties": {
+        "project_relative_path": {"$ref": "#/$defs/relative_path"},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "record_count": {"type": "integer", "minimum": 1},
+        "asset_count": {"type": "integer", "minimum": 1},
+        "path_count": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}

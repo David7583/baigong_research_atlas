@@ -1,0 +1,84 @@
+meta:
+  source: ChatGPT Conversation
+  date: 2026-02-08
+  theme: [结构边界校验, 行动层, 可信度评估]
+  tags: [policy, boundary, validate, action, v0001]
+  notes: "用于 validate_unit_boundaries_v0001.py 的结构边界校验策略，仅基于结构分布与边界稳定性，不涉及任何语义判断。"
+  status: active
+  updatable: true
+  managed_by: manual_registry_v0001.py
+  registered_by: header_system_guide_v0001
+  updated_via: none
+  lineage: header_system_guide_v0001
+
+# -------------------------------------------------------------------
+# Unit Boundary Validation Policy Body
+# -------------------------------------------------------------------
+
+policy_version: v0001
+
+# ==========================================================
+# 一、样本充足性控制
+# ==========================================================
+
+# 单个 unit 最少出现次数
+# 低于该次数时，不进行异常判定，直接视为 OK（保守策略）
+min_occurrence_count: 3
+
+# ==========================================================
+# 二、长度一致性阈值
+# ==========================================================
+
+# unit 长度方差的 OK / UNSTABLE / ANOMALOUS 分界
+length_variance_thresholds:
+  ok_max: 1.5
+  unstable_max: 3.5
+  # 大于 unstable_max 即视为 ANOMALOUS
+
+# ==========================================================
+# 三、segment 边界跨越控制
+# ==========================================================
+
+# unit 跨越多个 segment 的最大允许比例
+# 例如 0.3 表示：最多 30% 的出现允许发生在不同 segment
+max_segment_cross_ratio:
+  ok_max: 0.2
+  unstable_max: 0.5
+  # 大于 unstable_max 即视为 ANOMALOUS
+
+# ==========================================================
+# 四、sentence 级波动控制（保守）
+# ==========================================================
+
+# 是否启用 sentence 级边界分析
+enable_sentence_level_check: true
+
+# sentence 跨越比例阈值
+max_sentence_cross_ratio:
+  ok_max: 0.3
+  unstable_max: 0.6
+
+# ==========================================================
+# 五、异常类型启用开关
+# ==========================================================
+
+# 是否启用各类边界异常判断
+enable_length_variance_check: true
+enable_segment_cross_check: true
+enable_sentence_cross_check: true
+
+# ==========================================================
+# 六、输出策略（v0001 固定）
+# ==========================================================
+
+# 是否允许自动降级（ANOMALOUS → UNSTABLE）
+# v0001 阶段不启用，保持判断结果原样输出
+allow_auto_downgrade: false
+
+# ==========================================================
+# 七、预留字段（接口一致性）
+# ==========================================================
+
+# 预留字段，用于与 decide / prominence policy 保持接口一致
+# v0001 不参与任何计算
+dominant_path_threshold: 0.8

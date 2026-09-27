@@ -1,0 +1,97 @@
+schema_version: '1.0'
+side: action
+state_path: data_runtime/action/ai_controller/control.sqlite3
+sources:
+  keys: config/action/ai/api_keys_v0002.yml
+  catalog: config/action/ai/ai_api_catalog_v0001.yml
+  ollama: config/action/ai/ollama_config_v0001.yml
+  local_embeddings: config/action/ai/action_ai_local_embeddings_config_v0001.yml
+max_concurrent: 8
+per_app_concurrent: 2
+connect_timeout_seconds: 10
+read_timeout_seconds: 120
+total_timeout_seconds: 180
+max_request_bytes: 1048576
+max_response_bytes: 8388608
+operations:
+  openai: &id001
+    chat:
+      path: /chat/completions
+      model_in_body: true
+      required:
+      - messages
+    embed:
+      path: /embeddings
+      model_in_body: true
+      required:
+      - input
+    responses:
+      path: /responses
+      model_in_body: true
+      required:
+      - input
+    images:
+      path: /images/generations
+      model_in_body: true
+      required:
+      - prompt
+  openai_compatible: *id001
+  xai: *id001
+  anthropic:
+    messages:
+      path: /v1/messages
+      model_in_body: true
+      required:
+      - messages
+      - max_tokens
+    count_tokens:
+      path: /v1/messages/count_tokens
+      model_in_body: true
+      required:
+      - messages
+  anthropic_compatible:
+    messages:
+      path: /v1/messages
+      model_in_body: true
+      required:
+      - messages
+      - max_tokens
+    count_tokens:
+      path: /v1/messages/count_tokens
+      model_in_body: true
+      required:
+      - messages
+  openai_responses:
+    responses:
+      path: /responses
+      model_in_body: true
+      required:
+      - input
+  google_genai:
+    generate_content:
+      path: /models/{model}:generateContent
+      model_in_body: false
+      required:
+      - contents
+    embed:
+      path: /models/{model}:embedContent
+      model_in_body: true
+      required:
+      - content
+  ollama_native:
+    chat:
+      path: /api/chat
+      model_in_body: true
+      required:
+      - messages
+    generate:
+      path: /api/generate
+      model_in_body: true
+      required:
+      - prompt
+    embed:
+      path: /api/embed
+      model_in_body: true
+      required:
+      - input
+source_switch_policy: controller_owns_permission

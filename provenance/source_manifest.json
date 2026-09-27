@@ -1,0 +1,1236 @@
+[
+  {
+    "source": "AGENTS.md",
+    "target": "AGENTS.md",
+    "sha256": "da7c7a1423f755b5cf52438785d00500d4d8de80f5801c7758bba18219fe525c",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "application_agent.md",
+    "target": "application_agent.md",
+    "sha256": "0401840d0ec4bf9bdf631a8321eff01d2a4abb5fb769754472e25eaa2b1f9d0c",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "config/action/ai/action_ai_controller_config_v0002.yml",
+    "target": "config/action/ai/action_ai_controller_config_v0002.yml",
+    "sha256": "4f7d2505580a1e8a914970faee8f8d2eb17677092b5815babf56275091713c50",
+    "copied_sha256": "4f7d2505580a1e8a914970faee8f8d2eb17677092b5815babf56275091713c50",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/action_data_neo4j_schema_config_v0001.yml",
+    "target": "config/action/config/action_data_neo4j_schema_config_v0001.yml",
+    "sha256": "4ba17a3fa8527965e5bd8c3d863f161817b40511be613067f0d6d8380ed06a84",
+    "copied_sha256": "4ba17a3fa8527965e5bd8c3d863f161817b40511be613067f0d6d8380ed06a84",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/content_delta_filter_config_v0001.yml",
+    "target": "config/action/config/content_delta_filter_config_v0001.yml",
+    "sha256": "2f248750ae1702a43d1aedc521795b8e1a15b845a8a5b6ebbcfe316b0c22337b",
+    "copied_sha256": "2f248750ae1702a43d1aedc521795b8e1a15b845a8a5b6ebbcfe316b0c22337b",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/decide_unit_prominence_policy_v0001.yml",
+    "target": "config/action/config/decide_unit_prominence_policy_v0001.yml",
+    "sha256": "a0aadb9758bd58774d5bb7d8425f8ef311359bcd3c3488ee57dd8669046a48c4",
+    "copied_sha256": "a0aadb9758bd58774d5bb7d8425f8ef311359bcd3c3488ee57dd8669046a48c4",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/duckdb_schema_config_v0001.yml",
+    "target": "config/action/config/duckdb_schema_config_v0001.yml",
+    "sha256": "cfd31afec1ede23755300b577eb0a392fb5059093749cebb79d8a8b6adc369d2",
+    "copied_sha256": "cfd31afec1ede23755300b577eb0a392fb5059093749cebb79d8a8b6adc369d2",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/filter_structural_noise_v0001.yml",
+    "target": "config/action/config/filter_structural_noise_v0001.yml",
+    "sha256": "3502a151bb97af3feeb10f5fc95ba05f5f83f37bc2240de9ed9c60a2e041ad4a",
+    "copied_sha256": "3502a151bb97af3feeb10f5fc95ba05f5f83f37bc2240de9ed9c60a2e041ad4a",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/ingest_attribute_units_config_v0001.yml",
+    "target": "config/action/config/ingest_attribute_units_config_v0001.yml",
+    "sha256": "8a8b2f54f9cd7f2b22dd2739b330f305b8d4a050ec5931defe10f6085f546acf",
+    "copied_sha256": "8a8b2f54f9cd7f2b22dd2739b330f305b8d4a050ec5931defe10f6085f546acf",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/ingest_concept_units_config_v0001.yml",
+    "target": "config/action/config/ingest_concept_units_config_v0001.yml",
+    "sha256": "176c265cf31759d435282b5a39ce684118878a9b8ba0e3c8e4888a78f39be3af",
+    "copied_sha256": "176c265cf31759d435282b5a39ce684118878a9b8ba0e3c8e4888a78f39be3af",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/ingest_instance_units_config_v0001.yml",
+    "target": "config/action/config/ingest_instance_units_config_v0001.yml",
+    "sha256": "480bc2aa57b51f9a086f9754aec6344344fc66bdceb50eeb2ddef22dd204baca",
+    "copied_sha256": "480bc2aa57b51f9a086f9754aec6344344fc66bdceb50eeb2ddef22dd204baca",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/ingest_instance_units_semantic_config_v0001.yml",
+    "target": "config/action/config/ingest_instance_units_semantic_config_v0001.yml",
+    "sha256": "f4e7e142e81473b2fbc5072b4fb9ab1ada96b0f18d86063d230eff0130897b52",
+    "copied_sha256": "f4e7e142e81473b2fbc5072b4fb9ab1ada96b0f18d86063d230eff0130897b52",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/language_parse_lite_policy_v0002.yml",
+    "target": "config/action/config/language_parse_lite_policy_v0002.yml",
+    "sha256": "381f7fa9c26decba212a66c242e212b01afd300ad73d672bea1ab3fea20657e6",
+    "copied_sha256": "381f7fa9c26decba212a66c242e212b01afd300ad73d672bea1ab3fea20657e6",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/normalize_unit_variants_policy_v0001.yml",
+    "target": "config/action/config/normalize_unit_variants_policy_v0001.yml",
+    "sha256": "e626714ce6977606512ffe42283bd53f487bcbb6614cc8bd542a2d0460afa7b4",
+    "copied_sha256": "e626714ce6977606512ffe42283bd53f487bcbb6614cc8bd542a2d0460afa7b4",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/parse_eligibility_policy_v0002.yml",
+    "target": "config/action/config/parse_eligibility_policy_v0002.yml",
+    "sha256": "b06c245f6deeb05c39e3149ef8441a8fab3fec379823abe81a2e5606b9fccaf4",
+    "copied_sha256": "b06c245f6deeb05c39e3149ef8441a8fab3fec379823abe81a2e5606b9fccaf4",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/sql_writer_config_v0001.yml",
+    "target": "config/action/config/sql_writer_config_v0001.yml",
+    "sha256": "98afa61772db1b0f9bb3f5c8b8caebcc4948814fef11f580c595cb4ccbf205a8",
+    "copied_sha256": "98afa61772db1b0f9bb3f5c8b8caebcc4948814fef11f580c595cb4ccbf205a8",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/config/unified_ingestion_result_v0001.schema.json",
+    "target": "config/action/config/unified_ingestion_result_v0001.schema.json",
+    "sha256": "4539139ef2c51880381b99dace1ce66ce35e8a2f02e5af9942113ca6a6ad9c04",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "config/action/config/validate_unit_boundaries_v0001.yml",
+    "target": "config/action/config/validate_unit_boundaries_v0001.yml",
+    "sha256": "021e8b89e804ba5fe4aab902cf0f01a0907f3876f47075abee1f06cc17516b11",
+    "copied_sha256": "021e8b89e804ba5fe4aab902cf0f01a0907f3876f47075abee1f06cc17516b11",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/init_schema/action_data_duckdb_schema_config_v0001.yml",
+    "target": "config/action/init_schema/action_data_duckdb_schema_config_v0001.yml",
+    "sha256": "a78d9f690036698c689b7d9e307f5535469a092976b4e0ec3d0fe7e385fcf9cb",
+    "copied_sha256": "d341c685c639ce9ad0032cec30a396ccb25d3609af6627228204886f8ed55442",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/action/init_schema/action_data_sql_schema_config_v0001.yml",
+    "target": "config/action/init_schema/action_data_sql_schema_config_v0001.yml",
+    "sha256": "98321fe5d202fac54d5d86c31aa5386b6c24853f21a9450353b9cf4b98a496cc",
+    "copied_sha256": "ed2d8d8b33cd02ea83b405760108133f0b77d103cf3712d326a28afd3fdcdb5e",
+    "kind": "reviewed_configuration",
+    "change": "schema comments omit historical machine path where applicable"
+  },
+  {
+    "source": "config/contracts/canonical_conversation_ingress_v0001.schema.json",
+    "target": "config/contracts/canonical_conversation_ingress_v0001.schema.json",
+    "sha256": "827441b216c0c5b279c28b91bcd3fc70080051fec58ff754ba497855f7144ce0",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "config/contracts/canonical_ingress_envelope_v0001.schema.json",
+    "target": "config/contracts/canonical_ingress_envelope_v0001.schema.json",
+    "sha256": "075a163b0d938ed810352d0899902ef4491eb0e8eab10d8ff0c082a3a5fa83d2",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "config/contracts/format_fingerprint_registry_v0003.json",
+    "target": "config/contracts/format_fingerprint_registry_v0003.json",
+    "sha256": "0291bf52a4d39bea1d7168bb5ef17e7e1d8712b47dc46f0cf555c411047085b4",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "config/contracts/supplemental_annotation_source_access_v0001.schema.json",
+    "target": "config/contracts/supplemental_annotation_source_access_v0001.schema.json",
+    "sha256": "3183ab3e8b009faaf2e79d25b31fe1701a895ae76f1d064c10d2ad2d2899c032",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "development_agent.md",
+    "target": "development_agent.md",
+    "sha256": "296be77c32a40f6774d2f85ad5b68e08b90c03b6f3b056435cb85b1db1cd26ce",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "PROGRAMMING_LANGUAGE_SCRIPT_FORMAT.md",
+    "target": "PROGRAMMING_LANGUAGE_SCRIPT_FORMAT.md",
+    "sha256": "92842416e6c529f416be6d0e9097e60c81f3657f75dc53ed5e4930e752a74a18",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "script_format_agent.md",
+    "target": "script_format_agent.md",
+    "sha256": "d36b26f2790caf91ac99ae8bffffb76164194efe2461a03f3d1fa2561dedd698",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/adapters/select_semantic_text_units_v0001.py",
+    "target": "scripts/action/adapters/select_semantic_text_units_v0001.py",
+    "sha256": "8b34fdcb95476b97d31afd8d480a3822fb5761fb9b9ad6bf0f20b72632d4fd8d",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/anchor/check_sql_integrity_v0004.py",
+    "target": "scripts/action/anchor/check_sql_integrity_v0004.py",
+    "sha256": "c36fd880e16c572b3b83bb3b924632e02571ad5c2697e03e35c50614e4f8fd47",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/anchor/check_sql_integrity_v0005.py",
+    "target": "scripts/action/anchor/check_sql_integrity_v0005.py",
+    "sha256": "ff9440e9907f611861d19d1b5813b14be82f579d738e277c7239283af57db2a1",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/anchor/ingest_attribute_units_v0003.py",
+    "target": "scripts/action/anchor/ingest_attribute_units_v0003.py",
+    "sha256": "cbe040d95a0fb87812184420a46e9a6e4136293860cf6a8fd4a8f7004a950e00",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/anchor/ingest_concept_units_v0002.py",
+    "target": "scripts/action/anchor/ingest_concept_units_v0002.py",
+    "sha256": "40aa8993a0f0213de39cbc2820554bca720d21293e1c96a3837310fca4c87fda",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/anchor/ingest_instance_units_v0003.py",
+    "target": "scripts/action/anchor/ingest_instance_units_v0003.py",
+    "sha256": "0821db66f800d9a4bff0acfd5384a6057ee3ac7aa9fdbe436cdfa59c6e85eb42",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/anchor/replay_ingest_run_v0004.py",
+    "target": "scripts/action/anchor/replay_ingest_run_v0004.py",
+    "sha256": "b7e7b6f8523aefa987fae0c4994060d46fd869c2ff0df7624f2fa6b9bf384215",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/anchor/sql_writer_v0004.py",
+    "target": "scripts/action/anchor/sql_writer_v0004.py",
+    "sha256": "73f5fb6fa55a090110a866113a90a2a2b7b4198373448002dc92ccdf70afffff",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/anchor/sql_writer_v0005.py",
+    "target": "scripts/action/anchor/sql_writer_v0005.py",
+    "sha256": "1bf20135e10b75364f3cad1010f6ecb1fea2a9e716d28ee75d926aef3afc6c55",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/anchor/validate_ingest_payload_v0003.py",
+    "target": "scripts/action/anchor/validate_ingest_payload_v0003.py",
+    "sha256": "7baa0bd54ec41904c9252b35694fab8a77b4fc2552c951008a1de8e88cdb40b4",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/anchor/verify_data_anchor_v0003.py",
+    "target": "scripts/action/anchor/verify_data_anchor_v0003.py",
+    "sha256": "04588a8c73bb7d09c48aca5f4db3cc2ffa411d6dc5512ae71e05736a7dc8f0b4",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/anchor/verify_data_anchor_v0004.py",
+    "target": "scripts/action/anchor/verify_data_anchor_v0004.py",
+    "sha256": "dec1f7ce2a2aa00a94abf05d004b474512dfc52ed1fd4c88f8568943299aa69b",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/derivation/action_graph_chain_bridge_v0001.py",
+    "target": "scripts/action/derivation/action_graph_chain_bridge_v0001.py",
+    "sha256": "a6b0bfc51af728c78c224e07eb584e0084031fd4ca6aa77f34cb53d77485db96",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/derivation/action_graph_transaction_v0001.py",
+    "target": "scripts/action/derivation/action_graph_transaction_v0001.py",
+    "sha256": "23a2d61a332dd21cb18bae8b489f7a03009834b2a6e6e8d6b427978af7e117fc",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/derivation/action_sql_graph_projection_v0001.py",
+    "target": "scripts/action/derivation/action_sql_graph_projection_v0001.py",
+    "sha256": "a08ddaa4f52a3a48a5aa2e4474fc70b44b0a7777926fe88c897def69f3c6df29",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/derivation/enrich_retrieval_with_analytics_v0001.py",
+    "target": "scripts/action/derivation/enrich_retrieval_with_analytics_v0001.py",
+    "sha256": "708512e41300b74bbd501dd2486a5e254610b66d5211263c7ee6f03c2ca6b74b",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/derivation/init_graph_schema_v0002.py",
+    "target": "scripts/action/derivation/init_graph_schema_v0002.py",
+    "sha256": "84be92738e3cdb2bedb49f831df66eff4a1aa9efa192a31f1ebb873f01b0b763",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/derivation/query_duckdb_direct_v0001.py",
+    "target": "scripts/action/derivation/query_duckdb_direct_v0001.py",
+    "sha256": "1cb3cdd0caeeac8ebf6486b086577cdf4c629ac3cc04bf45814ffc85c4ddbb41",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/derivation/sync_hierarchy_to_graph_v0002.py",
+    "target": "scripts/action/derivation/sync_hierarchy_to_graph_v0002.py",
+    "sha256": "87c4d10bce02afaa235cc2f3d7275bc0cf84fd3c0a69cb3156bf6fc5e227f516",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/derivation/sync_sql_to_duckdb_v0004.py",
+    "target": "scripts/action/derivation/sync_sql_to_duckdb_v0004.py",
+    "sha256": "c560da19b259f742a174da2dc8b799a3c1a4eda75d384aae9d5614321576dad9",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/derivation/sync_sql_to_duckdb_v0006.py",
+    "target": "scripts/action/derivation/sync_sql_to_duckdb_v0006.py",
+    "sha256": "619bee28dc4037515eb03cb5d431e158be1015a3d2e54771c1298e1e1c1f6e18",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/derivation/sync_sql_to_graph_v0001.py",
+    "target": "scripts/action/derivation/sync_sql_to_graph_v0001.py",
+    "sha256": "5feb4a09be7159b58b6a5c0ee357a9ae572830a039fd103a6247d1468be46bbe",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/derivation/sync_to_graph_v0002.py",
+    "target": "scripts/action/derivation/sync_to_graph_v0002.py",
+    "sha256": "353232866b4beb92373e01d2ffdbc0c7dab1439d84bfd1b3f4fccb82d98806a9",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/action_ai_controller_v0002.py",
+    "target": "scripts/action/infrastructures/action_ai_controller_v0002.py",
+    "sha256": "604f2925328f2459ee3a34b2ad32a5053f4ad41b8438780ba49129d9500469ed",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/action_ai_local_embedding_v0001.py",
+    "target": "scripts/action/infrastructures/action_ai_local_embedding_v0001.py",
+    "sha256": "79c10750337a8cd3e232769437acd30c3cf40aaee8bae8320c974478b69bc022",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/action_ai_transport_v0001.py",
+    "target": "scripts/action/infrastructures/action_ai_transport_v0001.py",
+    "sha256": "bc247c46741d05a4de14f63ed556fb16cfffc429f956758de5f69c72e3883b3f",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/apply_intermediate_retention_v0001.py",
+    "target": "scripts/action/infrastructures/apply_intermediate_retention_v0001.py",
+    "sha256": "a33d5b5244218973e550143cdd29747d28faa7de9b9c3eb4fab92e500895a477",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/apply_intermediate_retention_v0002.py",
+    "target": "scripts/action/infrastructures/apply_intermediate_retention_v0002.py",
+    "sha256": "8a64776934371ee29e29bb6edce576f53cb316dca7d5ec51bdb95eb2959a26a5",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/intermediate_retention_contract_v0001.py",
+    "target": "scripts/action/infrastructures/intermediate_retention_contract_v0001.py",
+    "sha256": "c02e39c3861747e89feb12446af4753d6745289fc95aebe374e94c4d8f4a88ec",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/materialize_canonical_asset_v0001.py",
+    "target": "scripts/action/infrastructures/materialize_canonical_asset_v0001.py",
+    "sha256": "368d64d4e93839943957b771022bc64694fc2355f320251b47f773781047b4cd",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/plan_intermediate_retention_v0001.py",
+    "target": "scripts/action/infrastructures/plan_intermediate_retention_v0001.py",
+    "sha256": "64341b46929c1196342dc23218b6e1ab73030be86e36aa494197e4de675c64ec",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/plan_intermediate_retention_v0002.py",
+    "target": "scripts/action/infrastructures/plan_intermediate_retention_v0002.py",
+    "sha256": "8145b4428b5c6f2eace073ba16bea892f49535c66ddb5b7a724db4375ec38efc",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/register_action_lineage_v0002.py",
+    "target": "scripts/action/infrastructures/register_action_lineage_v0002.py",
+    "sha256": "3727a20bf2260d8093941fe5f2a64c83b95c55c536d1e080add70271115ac009",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/select_intermediate_retention_policy_v0001.py",
+    "target": "scripts/action/infrastructures/select_intermediate_retention_policy_v0001.py",
+    "sha256": "e3d1d03bde1b94c8f73cf88c9ec1c78374254dfb6ce4f7b38e0a722e968ac374",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/split_conversation_source_v0001.py",
+    "target": "scripts/action/infrastructures/split_conversation_source_v0001.py",
+    "sha256": "7226be3d38673c95d0674547aa2551417d2e2f1f75d1d5f25cae9f51981e36c2",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/verify_run_persistence_v0001.py",
+    "target": "scripts/action/infrastructures/verify_run_persistence_v0001.py",
+    "sha256": "d8a9c51deac457d92bffd99e31236083cf3e650e01f40756e09bb959487f08ca",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/infrastructures/verify_run_persistence_v0002.py",
+    "target": "scripts/action/infrastructures/verify_run_persistence_v0002.py",
+    "sha256": "0e79376e2ff7c734d4c2cb49a2b530532ae9c9981317844364f96961c2e5deac",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/framework/annotation_contract_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/framework/annotation_contract_v0001.py",
+    "sha256": "89530235854207f505d0403ed8e09f2f399f99914f54cb9cdcfe1089e0d8e9c1",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/framework/annotation_persistence_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/framework/annotation_persistence_v0001.py",
+    "sha256": "b22ecc08de503f4c67abdce1afd1d41820a58afa45460a817e9fa253fc45b759",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/framework/annotation_registry_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/framework/annotation_registry_v0001.py",
+    "sha256": "26cf7484860d5be535e57687e3c6763c7c5083110c4db514926277b1f18d4059",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/framework/plugin_runtime_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/framework/plugin_runtime_v0001.py",
+    "sha256": "fca84218a64aac4ce36ef82999ae290eefe9231a9236819f74bab56dac988546",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/framework/source_access_gateway_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/framework/source_access_gateway_v0001.py",
+    "sha256": "7e2383cde5b338c1e1b3a06efca911852bcf1b4744ac9e51f4e9a76be049989e",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/attach_source_identities_to_text_units_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/attach_source_identities_to_text_units_v0001.py",
+    "sha256": "557c52c75e33146e09e2cade065c8102a7b56a4c7f8621f2a018a5b5a7a327b7",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/extract_source_message_identities_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/extract_source_message_identities_v0001.py",
+    "sha256": "5f8e474725bf94aad44d62b61a9f661314684c6776ce22298d4527613509e28f",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/extract_source_message_identities_v0002.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/extract_source_message_identities_v0002.py",
+    "sha256": "37aa1f55b24531529fb8f08a31a1bda246158b3757e38255db6aa41d60d0fd71",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/extract_source_message_identities_v0003.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/extract_source_message_identities_v0003.py",
+    "sha256": "86fc46869f65c649cf9816cd261a16600d7be8fa1cb2955cf975ee827bcc6707",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/init_source_identity_annotation_schema_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/init_source_identity_annotation_schema_v0001.py",
+    "sha256": "0e59b71cbfdc6acb556b761dab4c62c773cb36eadcb0b51c4551336979f4fa84",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/source_message_identity_contract_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/source_message_identity_contract_v0001.py",
+    "sha256": "ff09c000a8d5403c74c268cf6216cbbafe31f23c519e8bd07b2d604adec54504",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/validate_source_identity_attachment_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/validate_source_identity_attachment_v0001.py",
+    "sha256": "fbd4d7d9d256b7d1d9d0bb11781378570932fa6f3cd0b8e4f449f103b66e5282",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/validate_source_identity_data_db_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/validate_source_identity_data_db_v0001.py",
+    "sha256": "567608c8d885a71b399cc0afcd5be760e4833625842e9bb96caeaf657c915646",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/write_source_identity_annotations_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_identity_annotation/write_source_identity_annotations_v0001.py",
+    "sha256": "353fdf57ae7fbc290d3fabe0a77b752946f8a9cecbb34b8130002a43af0ebaa1",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/attach_source_timestamps_to_text_units_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/attach_source_timestamps_to_text_units_v0001.py",
+    "sha256": "bc676d78cc0cb25a61f9489f47ac8378badfba866fe3f6191ac8f0cfc8005551",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/extract_source_message_timestamps_v0002.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/extract_source_message_timestamps_v0002.py",
+    "sha256": "efb76e1ef556b1b1d158aa3964c1eb796a0a86c35a599e8bc7e1a3ca7a7a2014",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/extract_source_message_timestamps_v0003.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/extract_source_message_timestamps_v0003.py",
+    "sha256": "8c7c14ac37c4acfbb23f800b8e6589cc2dd3969eba0c3ac6751c17d934b234e8",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/init_source_timestamp_annotation_schema_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/init_source_timestamp_annotation_schema_v0001.py",
+    "sha256": "c1026e07ac5143c9812c541e8ce7b214d31c2142721425531f5371adc5bfecbd",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/validate_source_timestamp_attachment_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/validate_source_timestamp_attachment_v0001.py",
+    "sha256": "2afd19155f7652bd49750df3059bb56c3a358a0581130e5e5b916722b9bdfbb9",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/validate_source_timestamp_data_db_v0002.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/validate_source_timestamp_data_db_v0002.py",
+    "sha256": "3a0a2882da8a1a0228b27d5e2aef3d9b80cb98826db723480ab0ce5245ea73e2",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/write_source_timestamp_annotations_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/source_timestamp_annotation/write_source_timestamp_annotations_v0001.py",
+    "sha256": "520ffe1d4dc66d088cc16361f03fbd9c39ce90541838860940ff09e2c24cdf82",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/plugins/temporal_annotation/temporal_annotation_plugin_v0001.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/plugins/temporal_annotation/temporal_annotation_plugin_v0001.py",
+    "sha256": "1f9cd69e9dede5eae11f4c07623b2bd44eb7535550222ea91e94ce0dff420521",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/supplemental_annotation_runner_v0003.py",
+    "target": "scripts/action/native_plugin/supplemental_annotation/supplemental_annotation_runner_v0003.py",
+    "sha256": "5d32d4df196088705f7802711b8f0db4bb4a309e76f2ca87d78e565080e4402f",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/aggregate_graph_statistics_v0002.py",
+    "target": "scripts/action/pipelines/aggregate_graph_statistics_v0002.py",
+    "sha256": "315f79a69f5930b27aab07d7766babd027519f2fcca74690376d7b51946398f5",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/analyze_graph_statistics_v0002.py",
+    "target": "scripts/action/pipelines/analyze_graph_statistics_v0002.py",
+    "sha256": "227ff33bae90f2d28f1208852b8e152d2d67a0505c69b50c014c66a186b85ee7",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/analyze_structural_adjacency_v0004.py",
+    "target": "scripts/action/pipelines/analyze_structural_adjacency_v0004.py",
+    "sha256": "6a663be734e5f9f839917327f1edf10294b3778ab838bca7abbeb1375f595358",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/analyze_structural_cooccurrence_v0004.py",
+    "target": "scripts/action/pipelines/analyze_structural_cooccurrence_v0004.py",
+    "sha256": "bc3fe6482cccd65d9ae933fe13f1f01cbdf5b7f0e79fc2ad6c781046fdea4255",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/analyze_structural_hierarchy_v0004.py",
+    "target": "scripts/action/pipelines/analyze_structural_hierarchy_v0004.py",
+    "sha256": "ee0e088398f006f1c7ef5094d55ba3223b5232d2b163729e5c91e3593a84e1eb",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/analyze_structural_statistics_v0003.py",
+    "target": "scripts/action/pipelines/analyze_structural_statistics_v0003.py",
+    "sha256": "e467e17d256529df7ad084724cf9ffd1b06c203c63c43a8a4d53591e87c906a0",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/build_unit_adjacency_graph_v0003.py",
+    "target": "scripts/action/pipelines/build_unit_adjacency_graph_v0003.py",
+    "sha256": "9f72d62ad90b7e97a39454a77691081294709d9b0a76197631c78884e5225db4",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/build_unit_cooccurrence_graph_v0003.py",
+    "target": "scripts/action/pipelines/build_unit_cooccurrence_graph_v0003.py",
+    "sha256": "9213b562e62e580a9053f0a617dc70b29197bfba5f313068a38217c0e48b70a2",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/build_unit_hierarchy_graph_v0002.py",
+    "target": "scripts/action/pipelines/build_unit_hierarchy_graph_v0002.py",
+    "sha256": "37a0c2afe2c7bdc9e5293c9ff2d94b50a12bac2a44d9ef797cf64e244546834b",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/content_delta_filter_v0001.py",
+    "target": "scripts/action/pipelines/content_delta_filter_v0001.py",
+    "sha256": "42d65376c5bfe20f2ba6c397ea3aac9e1fdc1bc28a1168cd20d33767c9ca0699",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/decide_parse_eligibility_v0003.py",
+    "target": "scripts/action/pipelines/decide_parse_eligibility_v0003.py",
+    "sha256": "79ba602ac2f3d21e807f45a7193966c10fc88d8eb5bd62878bd85228165cfe14",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/decide_unit_prominence_v0004.py",
+    "target": "scripts/action/pipelines/decide_unit_prominence_v0004.py",
+    "sha256": "d49712a2437953ae7d59a77e68b1feb45583bf18cd93a1bbdaffdfdaeaa341a4",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/extract_frequent_units_v0003.py",
+    "target": "scripts/action/pipelines/extract_frequent_units_v0003.py",
+    "sha256": "b9dc2b22903999b6a9b0264c09c52ec4a01514294ef2e1409ae0e5e5914e508d",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/filter_structural_noise_v0003.py",
+    "target": "scripts/action/pipelines/filter_structural_noise_v0003.py",
+    "sha256": "7389caa57e4d71906201a82019259574edcd6734b71888d91e0e9cd6efa00c71",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/language_parse_lite_v0003.py",
+    "target": "scripts/action/pipelines/language_parse_lite_v0003.py",
+    "sha256": "e1b29555cd1c8558a6c24a4c130a2beeb50b6fe950aa8aa3e588188875215333",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/normalize_text_units_v0002.py",
+    "target": "scripts/action/pipelines/normalize_text_units_v0002.py",
+    "sha256": "282cbb0553d23a54c1d048349632e2129503a628c9b02a2bc05012fc304e1867",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/normalize_unit_variants_v0003.py",
+    "target": "scripts/action/pipelines/normalize_unit_variants_v0003.py",
+    "sha256": "6fe2fe4f5c16bc08c6003e4f8069e48d722dcf88a24782a7e826b4b814a7c89b",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/profile_string_values_v0004.py",
+    "target": "scripts/action/pipelines/profile_string_values_v0004.py",
+    "sha256": "07cf00162036e7b2d09d404b0c1fa1913c1cfacf7915880f2623826108e02661",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/profile_unit_structure_v0003.py",
+    "target": "scripts/action/pipelines/profile_unit_structure_v0003.py",
+    "sha256": "23367e19656d7b2cea6e59204bce2ea312271d0ea0e3f5ca57552ab61ca08338",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/register_structural_units_v0003.py",
+    "target": "scripts/action/pipelines/register_structural_units_v0003.py",
+    "sha256": "5e8e53b8a3a3dc091e1f76bcd3fe60c23d85ba60aac11b3ad21840a184ccc5cc",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/pipelines/validate_unit_boundaries_v0003.py",
+    "target": "scripts/action/pipelines/validate_unit_boundaries_v0003.py",
+    "sha256": "39fc9c5b4504e755d3b6cd355fe2e6250c8f16febcdee18660bbfcec289db681",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/ingestion/ingestion_extract_v0001.py",
+    "target": "scripts/action/tools/ingestion/ingestion_extract_v0001.py",
+    "sha256": "44167bb771a3286827f7deff031a95f5dae74004f17cdf96bebfb021e9ae57b6",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/ingestion/ingestion_handoff_v0001.py",
+    "target": "scripts/action/tools/ingestion/ingestion_handoff_v0001.py",
+    "sha256": "d4c233252fd9ba3a8f2401752155e0591f1f7b5b690578a47eed37778c8109c0",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/ingestion/ingestion_handoff_v0002.py",
+    "target": "scripts/action/tools/ingestion/ingestion_handoff_v0002.py",
+    "sha256": "f98641d8facf2fbf28991c0893600d0a613fc4bccf5e13b59ef2d8f8bacb156a",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/ingestion/ingestion_quality_v0001.py",
+    "target": "scripts/action/tools/ingestion/ingestion_quality_v0001.py",
+    "sha256": "15af0be76812a5a608a85f9aef7ad57c07e5ad3809941a5657da48de74f34fdf",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/ingestion/ingestion_receipt_v0001.py",
+    "target": "scripts/action/tools/ingestion/ingestion_receipt_v0001.py",
+    "sha256": "c03c71271add544a6b7a3f8a1c53eeb3b8a3cbb4b300683b3175da87550cc57c",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/ingestion/ingestion_receipt_v0002.py",
+    "target": "scripts/action/tools/ingestion/ingestion_receipt_v0002.py",
+    "sha256": "ff9c7ab5d8d5bf60014d72f8e980441b9e37a0654dc47ece08a8f8e7419673ea",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/ingestion/ingestion_store_v0001.py",
+    "target": "scripts/action/tools/ingestion/ingestion_store_v0001.py",
+    "sha256": "05b13ca0f0b3a745d68ce880dbaac410e67dfcad51f86144137e6997658753c2",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/init_action_data_duckdb_schema_v0001.py",
+    "target": "scripts/action/tools/init_action_data_duckdb_schema_v0001.py",
+    "sha256": "b82a5fc798f28a4304c8fd83eb692d5d26b71051ff55c7b85b9308360b1aa206",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/init_action_data_sql_schema_v0001.py",
+    "target": "scripts/action/tools/init_action_data_sql_schema_v0001.py",
+    "sha256": "ad48b80e26a3db97460b5206fa8d11e0357b7d9df60abb99d0e91f4634f48e1b",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/retrieval/experience_annotation_v0001.schema.json",
+    "target": "scripts/action/tools/retrieval/experience_annotation_v0001.schema.json",
+    "sha256": "95dee4c424a0dbb90d2fcb3ddc2b5982d635c8e4c3b609e2381ee4ff985bbee7",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/retrieval/experience_contract_v0001.py",
+    "target": "scripts/action/tools/retrieval/experience_contract_v0001.py",
+    "sha256": "9530acea6cf264b4ef0729af7d8fa7aaf387ab886d725b940185a921c67ba917",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/retrieval/experience_episode_v0001.py",
+    "target": "scripts/action/tools/retrieval/experience_episode_v0001.py",
+    "sha256": "4e3b2d01b9be093bd9f05090ad893c79ff8cb6fc2f86ed31e7d6eb50868c44e0",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/retrieval/experience_projection_v0001.py",
+    "target": "scripts/action/tools/retrieval/experience_projection_v0001.py",
+    "sha256": "19c6b227aadb313047be06895bce904ca285fa1aeae783f2cbc3e46f2bef1070",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/retrieval/experience_query_v0001.py",
+    "target": "scripts/action/tools/retrieval/experience_query_v0001.py",
+    "sha256": "300d9a6e07196cd16130fd1b16210e6c288b22f39094ffd2252cca7e46b8f230",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/retrieval/experience_store_v0001.py",
+    "target": "scripts/action/tools/retrieval/experience_store_v0001.py",
+    "sha256": "28979f008ba1d1404e53777fbff184292da3fc0b30d1ebf5c2760c0d940b0302",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/retrieval/retrieval_ai_v0001.py",
+    "target": "scripts/action/tools/retrieval/retrieval_ai_v0001.py",
+    "sha256": "8fa11d2714db003cbfce7e78c231f5bccdf06d8ce4ec58637446810de328fbc8",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/retrieval/retrieval_executor_v0001.py",
+    "target": "scripts/action/tools/retrieval/retrieval_executor_v0001.py",
+    "sha256": "3e784a452f52bc9a4706ec9bcb5354f8159ae3b43d0abf6c3f486cd908dcfd98",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/retrieval/retrieval_pipeline_v0001.py",
+    "target": "scripts/action/tools/retrieval/retrieval_pipeline_v0001.py",
+    "sha256": "dd7749f4983dd7593d673ceb5256da3bd7ec8792c355fb057b7a6a8b2a316508",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/tools/retrieval/retrieval_strategy_v0001.py",
+    "target": "scripts/action/tools/retrieval/retrieval_strategy_v0001.py",
+    "sha256": "0972c1044d3c9f48d0e3ec19f79f02ae986f224f82ed9dd9d0fe776025d42b9e",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/vector/embedding_contract_validator_v0002.py",
+    "target": "scripts/action/vector/embedding_contract_validator_v0002.py",
+    "sha256": "7059e69548287488295826f9e1b2677211e0c2477a1f507bcfacfd0318d89a48",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/vector/embedding_generator_v0004.py",
+    "target": "scripts/action/vector/embedding_generator_v0004.py",
+    "sha256": "51ad6f410287227ae6ab2119da56bfe9050f3082fe3b106d4d02333f95a65247",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/vector/embedding_generator_v0005.py",
+    "target": "scripts/action/vector/embedding_generator_v0005.py",
+    "sha256": "555c69d7ab4cb15822188e981f71b66ab69f8ab983a722ddac27f050838d8f24",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/vector/embedding_generator_v0006.py",
+    "target": "scripts/action/vector/embedding_generator_v0006.py",
+    "sha256": "884dfca9dc1d6c5a8e8885a808842f00edbda7faace2d26db162948a4151510f",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/vector/embedding_lifecycle_guard_v0001.py",
+    "target": "scripts/action/vector/embedding_lifecycle_guard_v0001.py",
+    "sha256": "9be864343c06dc3c845bac5c895058d1131be90dd039c7f50282b9c377443a4c",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/vector/embedding_writer_v0001.py",
+    "target": "scripts/action/vector/embedding_writer_v0001.py",
+    "sha256": "46f78092a9e4c3187be82ad882f0eee1ffa5af099b41417083e4bfeb22c8e9ae",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/vector/vector_integrity_check_v0003.py",
+    "target": "scripts/action/vector/vector_integrity_check_v0003.py",
+    "sha256": "1f13e4a7a6b56b98987250f211def45c96932c37436970102b0c43446cf05a65",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/adapters/ingress/adapters/adapt_array_uuid_chat_messages_v0001.py",
+    "target": "scripts/adapters/ingress/adapters/adapt_array_uuid_chat_messages_v0001.py",
+    "sha256": "5b9fad17babc9e983ace3f05471b8a75c849fee7d1831c1ca3533cf42b33d501",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/adapters/ingress/adapters/adapt_mapping_current_node_conversations_v0003.py",
+    "target": "scripts/adapters/ingress/adapters/adapt_mapping_current_node_conversations_v0003.py",
+    "sha256": "83900bc464491514b07f7ec09b8dbbd03c4b25538d185515174b63fdf322e959",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/adapters/ingress/canonical_ingress_contract_validator_v0002.py",
+    "target": "scripts/adapters/ingress/canonical_ingress_contract_validator_v0002.py",
+    "sha256": "ec6b68b826f449369b7126e0a5694896aa75a24aefbde2280a469f82b5b09c95",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/adapters/ingress/canonical_ingress_gateway_v0003.py",
+    "target": "scripts/adapters/ingress/canonical_ingress_gateway_v0003.py",
+    "sha256": "37eba520937b50e883797952fd301077e71c369b413d5babaf6b0f7ae1aa0019",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/analyze_json_structure_v0003.py",
+    "target": "scripts/analyze_json_structure_v0003.py",
+    "sha256": "432c43ed1381ab757dc3507575aeb92f60a2513108a2ff0b554caec13c7fcee5",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/anchor/ingest_data_text_units_v0001.py",
+    "target": "scripts/anchor/ingest_data_text_units_v0001.py",
+    "sha256": "ca7ac65e607d34aa857771c21b78822b0f183709e8485f3a15ae40d0c838b088",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/anchor/sql_writer_v0001.py",
+    "target": "scripts/anchor/sql_writer_v0001.py",
+    "sha256": "d40183c2a79c502633709317c6c3c695b712c79336313c10962ea494a88f7ffa",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/coarse_slice_conversations_v0003.py",
+    "target": "scripts/coarse_slice_conversations_v0003.py",
+    "sha256": "d06d8ecc1256d93e88f81ee44db744339029febe772f35dcbc2dadccc705e2e1",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/discover_data_v0001.py",
+    "target": "scripts/discover_data_v0001.py",
+    "sha256": "c33f4c1c7a566b341700c9a0cd5598c1dd6b2359e85093261add9c8b2805bd9d",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/identify_file_type_v0002.py",
+    "target": "scripts/identify_file_type_v0002.py",
+    "sha256": "5c514bfde88cbd9dd3e2818a8a4b68718d2f0dd5e7f3137a273a1b7e7c1ac609",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/import_conversation_slices_to_processed_v0001.py",
+    "target": "scripts/import_conversation_slices_to_processed_v0001.py",
+    "sha256": "871cfcb43548a7615f0f099f913b8a6ede5e1bdab283bc64ea80c6a5a963bc1f",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/import_conversation_slices_to_processed_v0002.py",
+    "target": "scripts/import_conversation_slices_to_processed_v0002.py",
+    "sha256": "fd944dd0a8ead885b15aa35d8a5f8dbaf77da1d8d84dc747e22175df64868088",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/inventory_data_snapshot_v0001.py",
+    "target": "scripts/inventory_data_snapshot_v0001.py",
+    "sha256": "a04803ee8a6c184598c73142eada9d6bf6a2b488f0fd834d7688272110380da6",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/json_stream_v0001.py",
+    "target": "scripts/json_stream_v0001.py",
+    "sha256": "c18da3356c9793cdac114f5acc671c70a0437150ab1eb4726e35f5ca4a9b9a27",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/action_anchor_persistence_pipeline_v0005.py",
+    "target": "scripts/orchestration/action/action_anchor_persistence_pipeline_v0005.py",
+    "sha256": "18a6b7b2f239615e8ffaa0a175334715d88f41a2047b68e8ac14064313603931",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/action_anchor_persistence_pipeline_v0006.py",
+    "target": "scripts/orchestration/action/action_anchor_persistence_pipeline_v0006.py",
+    "sha256": "4de6cb246682a958b067973a2f38cdba06ad70486d31c0170dda0610eadf04c9",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/action_anchor_persistence_pipeline_v0007.py",
+    "target": "scripts/orchestration/action/action_anchor_persistence_pipeline_v0007.py",
+    "sha256": "0b505d586f4ca1fbed8b49281a3dc913c17ba8006e67fed4515a0bc702e06fd8",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/action_derivation_materialization_pipeline_v0005.py",
+    "target": "scripts/orchestration/action/action_derivation_materialization_pipeline_v0005.py",
+    "sha256": "78e4ae616eabb141e2f40feb353ff9e994ec0ee5da5092dea13ec7a119975b81",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/action_derivation_materialization_pipeline_v0006.py",
+    "target": "scripts/orchestration/action/action_derivation_materialization_pipeline_v0006.py",
+    "sha256": "e419632840ed43149bef30a5da3531c499bb218483a976522160aa9424463498",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/action_derivation_materialization_pipeline_v0007.py",
+    "target": "scripts/orchestration/action/action_derivation_materialization_pipeline_v0007.py",
+    "sha256": "73fa0e0225daf19641112d9abe4c9dce1a24e25cd7a16732947d05b61a81f5c2",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/action_derivation_materialization_pipeline_v0008.py",
+    "target": "scripts/orchestration/action/action_derivation_materialization_pipeline_v0008.py",
+    "sha256": "4ed66aae4e7fcad7805372bc8f3c75f12d1d93a5a7bd130f9cfa118180816aa7",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/backend_pipeline_v0002.py",
+    "target": "scripts/orchestration/action/backend_pipeline_v0002.py",
+    "sha256": "ea2a5f101aacb5186199d1ca6125b6bf85449bb2d6e6364ed937abb0d5e5a754",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/data_action_chain_pipeline_v0015.py",
+    "target": "scripts/orchestration/action/data_action_chain_pipeline_v0015.py",
+    "sha256": "dcce0326994abc19fb8cd20371398779549d6c2f2fd6666c844825d9232b9905",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/data_action_chain_pipeline_v0016.py",
+    "target": "scripts/orchestration/action/data_action_chain_pipeline_v0016.py",
+    "sha256": "0dd096cd107721e0dd7eae16b6cdc10911a22d841a5a4d22e615e0b93c7ac339",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/data_action_chain_pipeline_v0017.py",
+    "target": "scripts/orchestration/action/data_action_chain_pipeline_v0017.py",
+    "sha256": "55f2034ec869739d8373d0897a10863fd1429ced6a5f50005533b1a66434cbbc",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/data_action_chain_pipeline_v0018.py",
+    "target": "scripts/orchestration/action/data_action_chain_pipeline_v0018.py",
+    "sha256": "fc629f8ce51f526fc9a1d378399482e1c40058ba8311b6b266bcb41e1dadd379",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/data_action_chain_pipeline_v0019.py",
+    "target": "scripts/orchestration/action/data_action_chain_pipeline_v0019.py",
+    "sha256": "bfb740706bf829006a73339b42cdaf9a5ac5731b406928201577dcc8c970a62c",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/intermediate_retention_pipeline_v0001.py",
+    "target": "scripts/orchestration/action/intermediate_retention_pipeline_v0001.py",
+    "sha256": "edd64f5c0eb2641bc3964df52eadfaeb548c32d33ec7a62ff588daa5484d58c6",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/intermediate_retention_pipeline_v0002.py",
+    "target": "scripts/orchestration/action/intermediate_retention_pipeline_v0002.py",
+    "sha256": "812487060302c106aa5f1feecd9a64002997cab5f191a2fe69b0d17604a66c88",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/intermediate_retention_pipeline_v0003.py",
+    "target": "scripts/orchestration/action/intermediate_retention_pipeline_v0003.py",
+    "sha256": "31e2aa8001cfba6c46db4eded8ae905ae2d275ba2c379a6f2a5e2cd68b62fcc9",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/structural_unit_governance_graph_pipeline_v0003.py",
+    "target": "scripts/orchestration/action/structural_unit_governance_graph_pipeline_v0003.py",
+    "sha256": "ba4b070267ee5ccb4d5df35e30c088f83466679d671798d55fe37956e7f078f0",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/unified_ingestion_pipeline_v0002.py",
+    "target": "scripts/orchestration/action/unified_ingestion_pipeline_v0002.py",
+    "sha256": "585b5dd18456b426d4fe276df573765025b9d950d3f668c6db7fcb5d17f946b9",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/vector_embedding_pipeline_v0005.py",
+    "target": "scripts/orchestration/action/vector_embedding_pipeline_v0005.py",
+    "sha256": "0e323f3f43cae75a5f3d42e5c61887ad28f114a5b167e1523b20e871b712d4f6",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/vector_embedding_pipeline_v0006.py",
+    "target": "scripts/orchestration/action/vector_embedding_pipeline_v0006.py",
+    "sha256": "535e1f62fcf28193644b2d2d7e909f7efaa5ba272ea18a18824ee25f4cdf3c93",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/action/vector_embedding_pipeline_v0007.py",
+    "target": "scripts/orchestration/action/vector_embedding_pipeline_v0007.py",
+    "sha256": "9bd64a294be4245085d164277137b23ce1ee25b76ef64db9200786251d275258",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/data/data_admission_lineage_pipeline_v0001.py",
+    "target": "scripts/orchestration/data/data_admission_lineage_pipeline_v0001.py",
+    "sha256": "37e056e8c83b2200e2c04f60cdd55d6841f9e96d429da2c88b4360aaa9b296b2",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/data/data_admission_lineage_pipeline_v0004.py",
+    "target": "scripts/orchestration/data/data_admission_lineage_pipeline_v0004.py",
+    "sha256": "36b5c96080cf612539f85002e394b68c5a8f3f87319b08cbef87dc221a79e473",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/orchestration/data/data_discovery_parse_preparation_pipeline_v0004.py",
+    "target": "scripts/orchestration/data/data_discovery_parse_preparation_pipeline_v0004.py",
+    "sha256": "06b899291fd6641530190efff6e252ec680b8d837210a431890df9c2e8697b41",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/pipelines/decide_parse_eligibility_v0002.py",
+    "target": "scripts/pipelines/decide_parse_eligibility_v0002.py",
+    "sha256": "fe2d6a45255a5415aec04fd86316cfbaa5a9c8ed65a0c3fcb6b6b2a8e57e62a4",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/pipelines/filter_structural_noise_v0001.py",
+    "target": "scripts/pipelines/filter_structural_noise_v0001.py",
+    "sha256": "33558b9027fcfe448896ef3efb31f2a17a9d44d592896f819e278c4e6d6a2a03",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/pipelines/profile_string_values_v0001.py",
+    "target": "scripts/pipelines/profile_string_values_v0001.py",
+    "sha256": "4657ccef58917fd00631e3a5f10c05263d747a571d709c3b6eff205965447d34",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/pipelines/profile_string_values_v0002.py",
+    "target": "scripts/pipelines/profile_string_values_v0002.py",
+    "sha256": "4589ac6c3daa41abff074d294751a8f540f9d5bd93556ac0e96b3e7b933b8d2c",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/pipelines/profile_string_values_v0003.py",
+    "target": "scripts/pipelines/profile_string_values_v0003.py",
+    "sha256": "99ffbd67f252f31fea123f30507db2d9a314da2ad295811288550b1a511acf88",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/pipelines/validate_unit_boundaries_v0001.py",
+    "target": "scripts/pipelines/validate_unit_boundaries_v0001.py",
+    "sha256": "d9550b10f8c1b7a5bf821bf50780299d19625e1adc515ebeee76a8014edb3269",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/prepare_json_parse_task_v0001.py",
+    "target": "scripts/prepare_json_parse_task_v0001.py",
+    "sha256": "9abe0ad54f02a8d733c14cb1c6a1908cac6f63a98488cdaf0c57afc580c1db56",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/register_understanding_lineage_v0001.py",
+    "target": "scripts/register_understanding_lineage_v0001.py",
+    "sha256": "d94b0921a9b76b94c3c5f9fd7e1a5bd6423fb54420510ae6c6ae4763d4d8912b",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/snapshot_path_resolver_v0001.py",
+    "target": "scripts/snapshot_path_resolver_v0001.py",
+    "sha256": "d4685bc7619a160f9cf5db51c8951b7c53bf31f6fcdeb56cbd625464ce0904fb",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/tools/init_data_schema_v0001.py",
+    "target": "scripts/tools/init_data_schema_v0001.py",
+    "sha256": "a3f438a4f5f883d7c3bedce7e0961bc71fc428905837406e3826c82058282393",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/tools/init_duckdb_schema_v0001.py",
+    "target": "scripts/tools/init_duckdb_schema_v0001.py",
+    "sha256": "afe35b38daa3cdcb368e35925f8b27ba374c544aba4010c14b6c67d44989108d",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/vector/embedding_generator_v0003.py",
+    "target": "scripts/vector/embedding_generator_v0003.py",
+    "sha256": "88a25f4ef0ae5997133e03d771f97c1bc642203d7086f1e955525efc86853047",
+    "kind": "source_snapshot"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/config/plugin_registry_v0001.json",
+    "target": "scripts/action/native_plugin/supplemental_annotation/config/plugin_registry_v0001.json",
+    "sha256": "ee7d98d064e261cfbb6fde6051a4dc2a8412c75d0dae0d0568c1f1cba33ddc75",
+    "kind": "runtime_contract"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/config/plugin_registry_v0002.json",
+    "target": "scripts/action/native_plugin/supplemental_annotation/config/plugin_registry_v0002.json",
+    "sha256": "eb836f1bbf6f5ee1ee1afe8400df2a7f31e175b859d9dbc3a43a22161d487ff5",
+    "kind": "runtime_contract"
+  },
+  {
+    "source": "scripts/action/native_plugin/supplemental_annotation/config/supplemental_annotation_config_v0001.json",
+    "target": "scripts/action/native_plugin/supplemental_annotation/config/supplemental_annotation_config_v0001.json",
+    "sha256": "f7dab01a72fc92af65d6d0114416510acab629cce0cde8110698816661a11f56",
+    "kind": "runtime_contract"
+  },
+  {
+    "source": "scripts/action/infrastructures/scan_alias_meta_v0003.py",
+    "target": "scripts/action/infrastructures/scan_alias_meta_v0003.py",
+    "sha256": "d00de8197b67c63d831974d3f6b1e8d89ab67efc25e4b843847cba3bd7c7ee6d",
+    "kind": "development_registration_dependency"
+  },
+  {
+    "source": "scripts/action/infrastructures/register_script_v0002.py",
+    "target": "scripts/action/infrastructures/register_script_v0002.py",
+    "sha256": "0fcdb724458c349637d88a40f127f0312861d7c2d365904cc082f9a5979a1d66",
+    "kind": "development_registration_dependency"
+  },
+  {
+    "source": "scripts/action/infrastructures/register_function_v0002.py",
+    "target": "scripts/action/infrastructures/register_function_v0002.py",
+    "sha256": "11ac50151f55a19663865562bf9f05328c29da640574bf35ac55b403210715c0",
+    "kind": "development_registration_dependency"
+  },
+  {
+    "source": "scripts/action/infrastructures/register_task_v0002.py",
+    "target": "scripts/action/infrastructures/register_task_v0002.py",
+    "sha256": "99aeb884b9eb2b549f7536138d3e779a18d0c49aebc984bc1386a0c909b2ffb3",
+    "kind": "development_registration_dependency"
+  },
+  {
+    "source": "scripts/action/infrastructures/init_action_db_v0001.py",
+    "target": "scripts/action/infrastructures/init_action_db_v0001.py",
+    "sha256": "a60658e6a0f6e06c0bdb958fadd7a12fd2db845377d72b648f32cf6fb228275c",
+    "kind": "development_registration_dependency"
+  },
+  {
+    "source": "scripts/action/infrastructures/init_action_schema_v0002.py",
+    "target": "scripts/action/infrastructures/init_action_schema_v0002.py",
+    "sha256": "3e312adedd6d71e6ce19cde226aef0791a70092568c4d1ccdba6f77f186abf2d",
+    "kind": "development_registration_dependency"
+  },
+  {
+    "source": "config/action/init_schema/script_group.yml",
+    "target": "config/action/init_schema/script_group.yml",
+    "sha256": "771ce6a77cce7dc18e834257d9c0109bc850be356ee699d25b63f593201c08e3",
+    "kind": "development_registration_dependency"
+  },
+  {
+    "source": "config/action/init_schema/function_group.yml",
+    "target": "config/action/init_schema/function_group.yml",
+    "sha256": "545c53b08b4a694f968873872233d90b15724aadf94496acad03eb05513c13c1",
+    "kind": "development_registration_dependency"
+  },
+  {
+    "source": "config/action/init_schema/function_block_group.yml",
+    "target": "config/action/init_schema/function_block_group.yml",
+    "sha256": "51cb45b9d419058482a5bc90296aae99f5209aedb8a88277252e8631937f8a25",
+    "kind": "development_registration_dependency"
+  },
+  {
+    "source": "config/action/init_schema/task_group.yml",
+    "target": "config/action/init_schema/task_group.yml",
+    "sha256": "2fb1b7eca47377832efaa3a5f8a78a2bd1f3a9173542c55922da901c2bf2f4e7",
+    "kind": "development_registration_dependency"
+  },
+  {
+    "source": "config/action/config/scan_alias_meta_config_v0002.yml",
+    "target": "config/action/config/scan_alias_meta_config_v0002.yml",
+    "sha256": "bd82ad8505a2dcfaf5d5f785acb1daa7c281b14673f3daf3d00c0c3b65c553b0",
+    "kind": "development_registration_dependency"
+  },
+  {
+    "source": "docs/development/action_db_feature_development_and_registration_workflow.md",
+    "target": "docs/development/action_db_feature_development_and_registration_workflow.md",
+    "sha256": "af6847839e01285702412c2a0a1c031da69eb5394e6a5d8f5ef201a516866dfb",
+    "kind": "development_registration_dependency"
+  },
+  {
+    "source": "docs/cross_language_script_format_standard.md",
+    "target": "docs/cross_language_script_format_standard.md",
+    "sha256": "753a95dfc4aae6f9e4a6dbfaed480758a232304c1a27f2890544747bc856249e",
+    "kind": "development_registration_dependency"
+  }
+]
