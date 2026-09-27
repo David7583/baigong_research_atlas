@@ -1,0 +1,19 @@
+Baigong research_atlas
+Copyright 2026 Ruixin Yang
+
+Licensed under the Apache License, Version 2.0.
+
+Includes Data-Action-Data source from the local baigong project snapshot.
+Upstream: https://github.com/David7583/baigong
+Original upstream notice:
+
+Baigong (百工)
+Copyright 2026 Ruixin Yang
+
+Licensed under the Apache License, Version 2.0.
+
+Local additions include the research ledger, CLI/UI, handoff Skill and adapters.
+Local changes to copied files are recorded in provenance/source_manifest.json
+and provenance/local_changes.json. Original source attribution is retained.
+Third-party runtime dependencies remain under their respective licenses.
+The project logo was supplied by the repository owner.

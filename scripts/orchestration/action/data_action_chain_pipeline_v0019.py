@@ -1,3 +1,5 @@
+# Modified for baigong_research_atlas, 2026-09-27: optional bounded canonical
+# and structural workspace paths; original defaults and guards retained.
 # ============================================================
 # 文件名: data_action_chain_pipeline_v0019.py
 # 中文名: 自包含子链 Data Action 总编排

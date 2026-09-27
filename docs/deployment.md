@@ -57,4 +57,4 @@ AI 选择/启动与暂停只控制本应用。暂停阻止下一请求，不取�
 
 本地晋升与独立工程开发登记已完成，详见晋升报告。普通 UI 启动不扫描或登记。发布源码不携带本机 sql/action.db；维护者需要登记时，先核对新环境中该库是否已存在，再按开发登记规范操作，不能盲目运行会归档既有库的 init_action_db。
 
-最终发布还需确认仓库、公开性、许可/NOTICE 和 baigong 关联；当前没有推送或发布。完整真实资料质量、所有厂商原生协议及全客户端兼容不属于现有验收结论。
+用户已确认公开仓库 baigong_research_atlas、Apache-2.0 与 README/NOTICE 上游关联；发布操作与 Zenodo 状态见 publication_scope.md 和 publication_result.md。完整真实资料质量、所有厂商原生协议及全客户端兼容不属于现有验收结论。

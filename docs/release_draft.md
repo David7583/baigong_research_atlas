@@ -1,15 +1,11 @@
-# 首次发布草稿
+# Baigong research_atlas — initial source release
 
-研究接续将项目、任务与执行器身份分开保存，支持在阶段边界更换Agent或普通AI，保留证据、成果、未决问题和精确恢复记录。
+Continue one project across agents and AI clients at stage boundaries, preserving task revisions, evidence, outputs and next steps.
 
-本版包含本地CLI/界面、自有Skill、版本化任务账本、受控词项/ID检索、经Action总控生成AI提案、显式归档与SQLite/DuckDB索引。已实测Harness文件工具接续及DeepSeek/Kimi API；其他兼容客户端与API按接口接入，不能将本版描述为已验收所有厂商。
+Includes local CLI/UI, a handoff Skill, a versioned ledger, controlled lexical/ID retrieval, AI proposals through Action AI Controller, explicit archiving and SQLite/DuckDB indexing. Harness is optional. Real DeepSeek/Kimi and Harness tests do not imply acceptance of all providers or clients.
 
-本地晋升与独立目录验收通过。本轮部署验收未新增模型调用。尚未对外发布。
+Local promotion and independent-directory verification passed. Windows / Python 3.12.7 was tested using an existing environment; clean-machine installation remains unverified. Publication preparation adds no model calls.
 
-发布操作前确认：
+Public repository: baigong_research_atlas. License: Apache-2.0. Includes bilingual guides, owner-supplied logo, NOTICE and CITATION.cff, with provenance links to baigong. Runtime data, credentials and model outputs are excluded.
 
-- 仓库名称与公开/私有。
-- 新代码许可证；复用代码来源及必要授权文本。当前没有擅自选择许可证。
-- baigong 关联形式；当前草稿采用README链接与逐文件来源清单。
-
-发布范围为Git源码快照。安装环境自行提供Python及requirements依赖；模型Key和总控应用凭据由部署管理员单独配置。不要发布本机数据库、合成测试会话、模型输出或私有凭据。
+Zenodo archiving is tracked separately. A release tag and DOI will only be recorded after successful creation.

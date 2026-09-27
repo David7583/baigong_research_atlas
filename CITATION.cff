@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using this metadata."
+title: "Baigong research_atlas"
+type: software
+authors:
+  - family-names: "Yang"
+    given-names: "Ruixin"
+    alias: "David7583"
+repository-code: "https://github.com/David7583/baigong_research_atlas"
+url: "https://github.com/David7583/baigong_research_atlas"
+license: "Apache-2.0"
+abstract: >-
+  Local research continuity across agents and AI clients, with versioned tasks,
+  traceable evidence, verifiable handoffs and explicit SQLite/DuckDB indexing.
+keywords:
+  - research continuity
+  - local AI
+  - provenance
+  - agent handoff

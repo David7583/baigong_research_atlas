@@ -1,11 +1,19 @@
 # 发布边界与来源
 
-发布来源为当前独立 Git 工程。尚未设置 remote、推送、创建公开仓库或 Release。
+2026-09-27：用户确定公开仓库名 baigong_research_atlas，采用 Apache-2.0，关联 baigong，并授权 GitHub 与 Zenodo 发布。
 
-已核实 [David7583/baigong](https://github.com/David7583/baigong) 是公开的本地 Data–Action–Data 项目，仓库声明 Apache-2.0。研究助手复制的是本机当前源码，不把它自动等同于远端 v0009 发布快照。复制来源及哈希见 provenance/source_manifest.json，修改过的配置另记复制后哈希。
+发布对象仅为本独立 Git 工程的受审查源码。仓库目标：https://github.com/David7583/baigong_research_atlas 。实际远端发布结果记录在 publication_result.md，不能将准备完成当成已上线。
 
-建议关联方式：独立研究助手仓库的 README 链接 baigong，并列出复用代码来源和版本。是否修改 baigong 索引、是否作为其子项目以及新仓库名称、公开性、许可，均在可审查包完成后由用户确认。
+关联方式为 README 上游链接、NOTICE 归属及 provenance/source_manifest.json 逐文件溯源。复制的是本机快照，不声称等同于远端发行版本；不修改 baigong 上游仓库。
 
-不得直接将上游许可证声明扩展为用户尚未选择的新代码许可证。当前不放置臆定版权人或未获确认的新项目授权声明；正式发布前补齐 LICENSE/NOTICE 与第三方依赖归属。
+不发布 runtime、真实资料、数据库、模型输出、凭据、权限 Token、虚拟环境、模型权重和私有会话。
 
-发布清单需排除运行目录、真实数据、SQLite/DuckDB、密钥、权限 Token、.venv、npm 缓存、模型权重、私有会话及大体积中间产物。源文件完整性和真实执行验收是两个不同门槛。
+## Zenodo
+
+用户随后明确暂缓 Zenodo，本次不连接、不创建归档或 DOI。下列仅为未来可选流程。
+
+采用 GitHub Release 归档流程：登录 Zenodo，在 GitHub 集成中启用本仓库，然后创建发行版本，核对归档文件和引用元数据，再将真实 DOI 回填 CITATION.cff 与 README。若首次授权涉及新增访问权限，由用户完成授权。未取得 DOI 时不填造假的占位 DOI，也不复用 baigong 的 DOI。
+
+引用作者沿用上游公开 CITATION.cff 的 Ruixin Yang（David7583）。CITATION.cff 为软件元数据来源，不另外维护一份可能冲突的 .zenodo.json。
+
+官方说明：https://help.zenodo.org/docs/github/
